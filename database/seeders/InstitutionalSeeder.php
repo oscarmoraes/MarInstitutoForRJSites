@@ -1,0 +1,346 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\BoardMember;
+use App\Models\Member;
+use Illuminate\Database\Seeder;
+
+class InstitutionalSeeder extends Seeder
+{
+    public function run(): void
+    {
+        // 1. DIRETORIA EXECUTIVA, COMISSÕES, REPRESENTANTES E MEMBROS HONORÁRIOS
+        $boardMembers = [
+            // Diretoria Executiva
+            [
+                'nome' => 'Dr. Carlos Eduardo Mendonça',
+                'cargo' => 'Presidente Nacional',
+                'oab' => '18.420',
+                'uf' => 'DF',
+                'tipo' => 'DIRETORIA',
+                'foto_url' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
+                'bio' => 'Advogado constitucionalista com mais de 20 anos de atuação perante os Tribunais Superiores. Ex-conselheiro seccional e defensor intransigente das prerrogativas da advocacia.',
+                'ordem' => 1,
+            ],
+            [
+                'nome' => 'Dra. Mariana Alencar Fonseca',
+                'cargo' => 'Vice-Presidente Nacional',
+                'oab' => '245.890',
+                'uf' => 'SP',
+                'tipo' => 'DIRETORIA',
+                'foto_url' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+                'bio' => 'Especialista em Direito Empresarial e Processual Civil. Coordenadora de redes de mentoria jurídica e ativista pela equidade de gênero nos espaços institucionais.',
+                'ordem' => 2,
+            ],
+            [
+                'nome' => 'Dr. Rodrigo Veiga Ribeiro',
+                'cargo' => 'Secretário-Geral Nacional',
+                'oab' => '112.300',
+                'uf' => 'RJ',
+                'tipo' => 'DIRETORIA',
+                'foto_url' => 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
+                'bio' => 'Advogado criminalista e professor universitário. Responsável pela coordenação dos núcleos estaduais e pela articulação institucional de novos membros.',
+                'ordem' => 3,
+            ],
+            [
+                'nome' => 'Dra. Fernanda Castelo Branco',
+                'cargo' => 'Diretora Tesoureira Nacional',
+                'oab' => '104.210',
+                'uf' => 'MG',
+                'tipo' => 'DIRETORIA',
+                'foto_url' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80',
+                'bio' => 'Advogada especialista em Governança Corporativa e Gestão Financeira. Atua na garantia da transparência e gestão de recursos das iniciativas do MAR.',
+                'ordem' => 4,
+            ],
+            [
+                'nome' => 'Dr. Henrique Siqueira Filho',
+                'cargo' => 'Diretor de Relações Institucionais',
+                'oab' => '62.450',
+                'uf' => 'BA',
+                'tipo' => 'DIRETORIA',
+                'foto_url' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+                'bio' => 'Atua na interlocução do Instituto MAR com os Poderes Executivo, Legislativo e Judiciário, além de entidades representativas internacionais.',
+                'ordem' => 5,
+            ],
+            [
+                'nome' => 'Dra. Juliana Alvarenga',
+                'cargo' => 'Diretora de Defesa de Prerrogativas',
+                'oab' => '84.110',
+                'uf' => 'RS',
+                'tipo' => 'DIRETORIA',
+                'foto_url' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80',
+                'bio' => 'Coordenadora da rede nacional de suporte imediato a advogados em situação de violação do livre exercício profissional.',
+                'ordem' => 6,
+            ],
+
+            // Comissões Temáticas
+            [
+                'nome' => 'Dra. Camila Siqueira',
+                'cargo' => 'Comissão de Prerrogativas e Valorização Profissional',
+                'oab' => '120.340',
+                'uf' => 'MG',
+                'tipo' => 'COMISSAO',
+                'foto_url' => null,
+                'bio' => 'Atua prioritariamente na prestação de assistência a advogados em casos de violação de prerrogativas profissionais em todo o território nacional.',
+                'ordem' => 10,
+            ],
+            [
+                'nome' => 'Dr. Lucas Vasconcelos',
+                'cargo' => 'Comissão de Inovação e Direito Digital',
+                'oab' => '214.500',
+                'uf' => 'SP',
+                'tipo' => 'COMISSAO',
+                'foto_url' => null,
+                'bio' => 'Desenvolve pareceres sobre regulação de inteligência artificial, segurança de dados em escritórios e modernização dos sistemas judiciais.',
+                'ordem' => 11,
+            ],
+            [
+                'nome' => 'Dr. Fernando Rocha',
+                'cargo' => 'Comissão de Formação e Educação Jurídica',
+                'oab' => '78.900',
+                'uf' => 'BA',
+                'tipo' => 'COMISSAO',
+                'foto_url' => null,
+                'bio' => 'Organiza congressos, cursos de extensão, ciclos de palestras e publica materiais didáticos para o constante aprimoramento da advocacia.',
+                'ordem' => 12,
+            ],
+            [
+                'nome' => 'Dra. Patricia Guimarães',
+                'cargo' => 'Comissão de Defesa do Estado Democrático de Direito',
+                'oab' => '95.600',
+                'uf' => 'RS',
+                'tipo' => 'COMISSAO',
+                'foto_url' => null,
+                'bio' => 'Acompanha proposições legislativas e emite notas públicas em defesa das garantias constitucionais e dos direitos fundamentais da sociedade.',
+                'ordem' => 13,
+            ],
+
+            // Representantes Regionais por UF
+            [
+                'nome' => 'Dra. Beatriz Toledo Santos',
+                'cargo' => 'Coordenadora Estadual SP',
+                'oab' => '312.450',
+                'uf' => 'SP',
+                'tipo' => 'REPRESENTANTE',
+                'foto_url' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+                'bio' => 'Atuação com foco em prerrogativas e estruturação de novos comitês regionais no interior paulista.',
+                'ordem' => 20,
+            ],
+            [
+                'nome' => 'Dr. Marcelo Guimarães Pinto',
+                'cargo' => 'Coordenador Estadual RJ',
+                'oab' => '145.210',
+                'uf' => 'RJ',
+                'tipo' => 'REPRESENTANTE',
+                'foto_url' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+                'bio' => 'Advogado atuarial e empresarial. Lidera encontros de valorização da jovem advocacia fluminense.',
+                'ordem' => 21,
+            ],
+            [
+                'nome' => 'Dra. Renata de Oliveira Neves',
+                'cargo' => 'Coordenadora Estadual MG',
+                'oab' => '98.670',
+                'uf' => 'MG',
+                'tipo' => 'REPRESENTANTE',
+                'foto_url' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
+                'bio' => 'Especialista em Direito Público e Defesa da Ética. Responsável pela expansão do MAR no Triângulo Mineiro.',
+                'ordem' => 22,
+            ],
+            [
+                'nome' => 'Dr. Antonio Carlos de Souza',
+                'cargo' => 'Coordenador Estadual BA',
+                'oab' => '54.120',
+                'uf' => 'BA',
+                'tipo' => 'REPRESENTANTE',
+                'foto_url' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+                'bio' => 'Atua na coordenação de fóruns de debate sobre garantias fundamentais e prerrogativas no Nordeste.',
+                'ordem' => 23,
+            ],
+            [
+                'nome' => 'Dra. Claudia Hoffmann Pires',
+                'cargo' => 'Coordenadora Estadual RS',
+                'oab' => '76.890',
+                'uf' => 'RS',
+                'tipo' => 'REPRESENTANTE',
+                'foto_url' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
+                'bio' => 'Doutora em Direito Processual. Promove seminários regionais de atualização técnica para advogados gaúchos.',
+                'ordem' => 24,
+            ],
+            [
+                'nome' => 'Dr. Gabriel Mello Franco',
+                'cargo' => 'Coordenador de Relações Institucionais DF',
+                'oab' => '29.110',
+                'uf' => 'DF',
+                'tipo' => 'REPRESENTANTE',
+                'foto_url' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80',
+                'bio' => 'Articulador junto às comissões parlamentares e instâncias regulatórias dos Conselhos de Direito em Brasília.',
+                'ordem' => 25,
+            ],
+
+            // Membros Honorários
+            [
+                'nome' => 'Prof. Dr. Arnaldo Vasconcellos',
+                'cargo' => 'Jurista & Ex-Conselheiro Federal da OAB',
+                'oab' => 'Conselheiro Emérito',
+                'uf' => 'DF',
+                'tipo' => 'HONORARIO',
+                'foto_url' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+                'bio' => 'Homenageado por sua obra de referência sobre Teoria Geral do Direito e por quatro décadas de docência universitária formando gerações de juristas e advogados. "A advocacia é o verdadeiro pilar sem o qual as garantias constitucionais se tornam meras intenções teóricas."',
+                'ordem' => 30,
+            ],
+            [
+                'nome' => 'Dra. Helena Maria de Figueiredo',
+                'cargo' => 'Pioneira na Defesa de Prerrogativas',
+                'oab' => 'OAB/SP Emérita',
+                'uf' => 'SP',
+                'tipo' => 'HONORARIO',
+                'foto_url' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+                'bio' => 'Pioneira na atuação feminina em tribunais do júri e líder de movimentos históricos de combate às arbitrariedades processuais. "Não há advocacia livre sem coragem cívica e independência absoluta das instituições judiciais."',
+                'ordem' => 31,
+            ],
+            [
+                'nome' => 'Dr. Sampaio Doria Sobrinho',
+                'cargo' => 'Advogado & Parecerista Constitucional',
+                'oab' => 'OAB/RJ Emérito',
+                'uf' => 'RJ',
+                'tipo' => 'HONORARIO',
+                'foto_url' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+                'bio' => 'Reconhecido pela excelência técnica em pareceres sobre soberania do cidadão, devido processo legal e valorização honorária. "Respeitar o advogado é garantir o direito de defesa de cada cidadão brasileiro."',
+                'ordem' => 32,
+            ],
+            [
+                'nome' => 'Dra. Maria Lucia de Siqueira',
+                'cargo' => 'Professora Emérita & Processualista',
+                'oab' => 'OAB/MG Emérita',
+                'uf' => 'MG',
+                'tipo' => 'HONORARIO',
+                'foto_url' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+                'bio' => 'Autora de diversas obras sobre a reforma processual e defensora incansável da ética profissional no ensino jurídico. "A formação continuada é o compromisso ético mais valioso que um advogado assume com a sociedade."',
+                'ordem' => 33,
+            ],
+        ];
+
+        foreach ($boardMembers as $data) {
+            BoardMember::updateOrCreate(
+                ['nome' => $data['nome'], 'tipo' => $data['tipo']],
+                $data
+            );
+        }
+
+        // 2. ASSOCIADOS (MEMBERS)
+        $members = [
+            [
+                'matricula' => '#2026-9842',
+                'nome' => 'Dr. Marcos Vinícius Alencar',
+                'cpf' => '123.456.789-00',
+                'email' => 'marcos.alencar@oab.org.br',
+                'oab' => '123456',
+                'uf' => 'SP',
+                'categoria' => 'Advogado Efetivo',
+                'comissao' => 'Prerrogativas & Honorários',
+                'status' => 'ATIVO',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'A9F2-2026',
+            ],
+            [
+                'matricula' => '#2026-4412',
+                'nome' => 'Dra. Ana Paula Silveira',
+                'cpf' => '234.567.890-11',
+                'email' => 'ana.silveira@oabdf.org.br',
+                'oab' => '45890',
+                'uf' => 'DF',
+                'categoria' => 'Advogado Efetivo',
+                'comissao' => 'Prerrogativas e Defesa Institucional',
+                'status' => 'ATIVO',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'B7C1-2026',
+            ],
+            [
+                'matricula' => '#2026-7819',
+                'nome' => 'Dr. Roberto Mendes Fonseca',
+                'cpf' => '345.678.901-22',
+                'email' => 'roberto.fonseca@oabrj.org.br',
+                'oab' => '189230',
+                'uf' => 'RJ',
+                'categoria' => 'Advogado Efetivo',
+                'comissao' => 'Inovação e Direito Digital',
+                'status' => 'ATIVO',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'C3D4-2026',
+            ],
+            [
+                'matricula' => '#2026-3201',
+                'nome' => 'Dra. Juliana Freitas Cabral',
+                'cpf' => '456.789.012-33',
+                'email' => 'juliana.cabral@oabmg.org.br',
+                'oab' => '78450',
+                'uf' => 'MG',
+                'categoria' => 'Membro Honorário',
+                'comissao' => 'Educação Jurídica',
+                'status' => 'ATIVO',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'D9E8-2026',
+            ],
+            [
+                'matricula' => '#2026-1150',
+                'nome' => 'Dr. Carlos Eduardo Nogueira',
+                'cpf' => '567.890.123-44',
+                'email' => 'carlos.nogueira@oabba.org.br',
+                'oab' => '34901',
+                'uf' => 'BA',
+                'categoria' => 'Advogado Efetivo',
+                'comissao' => 'Relações Institucionais',
+                'status' => 'PENDENTE',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'E1F2-2026',
+            ],
+            [
+                'matricula' => '#2026-9023',
+                'nome' => 'Lucas Gabriel Arantes',
+                'cpf' => '678.901.234-55',
+                'email' => 'lucas.arantes@universidade.edu.br',
+                'oab' => 'Estudante',
+                'uf' => 'RS',
+                'categoria' => 'Estudante / Acadêmico',
+                'comissao' => 'Jovem Advocacia',
+                'status' => 'ATIVO',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'F5A6-2026',
+            ],
+            [
+                'matricula' => '#2026-5589',
+                'nome' => 'Dra. Fernanda Moreira Lima',
+                'cpf' => '789.012.345-66',
+                'email' => 'fernanda.lima@oabpr.org.br',
+                'oab' => '92114',
+                'uf' => 'PR',
+                'categoria' => 'Advogado Efetivo',
+                'comissao' => null,
+                'status' => 'SUSPENSO',
+                'validade' => '2025-12-31',
+                'hash_validacao' => 'G7H8-2026',
+            ],
+            [
+                'matricula' => '#2026-6632',
+                'nome' => 'Dr. Paulo Henrique Barreto',
+                'cpf' => '890.123.456-77',
+                'email' => 'paulo.barreto@oabpe.org.br',
+                'oab' => '41205',
+                'uf' => 'PE',
+                'categoria' => 'Advogado Efetivo',
+                'comissao' => 'Defesa do Estado Democrático',
+                'status' => 'ATIVO',
+                'validade' => '2026-12-31',
+                'hash_validacao' => 'H9I0-2026',
+            ],
+        ];
+
+        foreach ($members as $m) {
+            Member::updateOrCreate(
+                ['matricula' => $m['matricula']],
+                $m
+            );
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1C3D5A" />
+      <stop offset="100%" stop-color="#0F2334" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo minimalista com tom institucional -->
+  <rect width="256" height="256" fill="url(#avatarGrad)" />
+
+  <!-- Silhueta minimalista e limpa -->
+  <g fill="#E2E8F0">
+    <!-- Cabeça -->
+    <circle cx="128" cy="94" r="40" />
+
+    <!-- Ombros / Tronco suavizado -->
+    <path d="M 48 218 C 48 168, 84 158, 128 158 C 172 158, 208 168, 208 218 Z" />
+  </g>
+</svg>

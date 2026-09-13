@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias & Portal — Instituto MAR</title>
+  <meta name="description" content="Acompanhe as últimas publicações, notícias institucionais e coberturas do Instituto Movimento da Advocacia Renovada.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-gray-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+  <!-- TOP BAR -->
+  <div class="bg-[#17344D] text-slate-300 text-xs py-2 px-4 border-b border-slate-700/50 hidden md:block">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-6">
+        <span><i class="fa-solid fa-scale-balanced text-[#C6282D] mr-1.5"></i> Movimento da Advocacia Renovada</span>
+        <span><i class="fa-solid fa-location-dot text-slate-400 mr-1.5"></i> Presença Nacional em Todos os Estados</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="notas-e-atos-oficiais.html" class="hover:text-white transition-colors"><i class="fa-solid fa-file-contract mr-1"></i> Atos Oficiais</a>
+        <span class="text-slate-600">|</span>
+        <a href="seja-um-associado.html" class="hover:text-white transition-colors font-medium"><i class="fa-solid fa-user-plus mr-1 text-[#C6282D]"></i> Seja um Associado</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER STICKY (SINGLE LINE UNIFIED) -->
+  <header class="site-header py-3 px-4 sm:px-6 md:px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+      
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="assets/images/logo-mar.png" alt="Instituto MAR" class="h-10 sm:h-12 w-auto object-contain">
+      </a>
+
+      <!-- MENU DESKTOP -->
+      <nav class="hidden xl:flex items-center gap-8 text-sm font-medium text-slate-700 whitespace-nowrap">
+        <a href="index.html" class="hover:text-[#17344D] py-2 transition-colors">Início</a>
+        
+        <!-- Dropdown Institucional -->
+        <div class="nav-dropdown group">
+          <button class="hover:text-[#17344D] py-2 flex items-center gap-1.5 focus:outline-none">
+            Institucional <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform"></i>
+          </button>
+          <div class="nav-dropdown-menu">
+            <div class="w-60 bg-white border border-slate-200 rounded-xl shadow-xl py-2">
+              <a href="diretoria-e-comissoes.html" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-users text-[#17344D] w-4 mr-2"></i> Diretoria e Comissões</a>
+              <a href="representantes.html" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-map-location-dot text-[#17344D] w-4 mr-2"></i> Representantes por Estado</a>
+              <a href="membros-honorarios.html" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-award text-[#17344D] w-4 mr-2"></i> Membros Honorários</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown Conteúdo -->
+        <div class="nav-dropdown group">
+          <button class="text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1 py-2 flex items-center gap-1.5 focus:outline-none">
+            Conteúdo <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform"></i>
+          </button>
+          <div class="nav-dropdown-menu">
+            <div class="w-60 bg-white border border-slate-200 rounded-xl shadow-xl py-2">
+              <a href="noticias.html" class="block px-4 py-2.5 bg-slate-50 font-bold text-[#17344D] text-xs"><i class="fa-solid fa-newspaper text-[#C6282D] w-4 mr-2"></i> Notícias e Portal</a>
+              <a href="notas-e-atos-oficiais.html" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-scroll text-[#17344D] w-4 mr-2"></i> Notas e Atos Oficiais</a>
+              <a href="cursos-e-palestras.html" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-graduation-cap text-[#17344D] w-4 mr-2"></i> Cursos e Palestras</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- CTAs DESKTOP -->
+      <div class="hidden xl:flex items-center gap-3 shrink-0 whitespace-nowrap">
+        <a href="representantes.html" class="px-3.5 py-2 border-2 border-[#17344D] text-[#17344D] hover:bg-[#17344D] hover:text-white font-title font-bold text-xs rounded-lg transition-all flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-location-crosshairs text-[#C6282D]"></i> MAR no seu Estado
+        </a>
+        <a href="seja-um-associado.html" class="btn-accent-mar text-xs py-2.5 px-4 shadow-sm">
+          Seja um Associado
+        </a>
+      </div>
+
+      <!-- BOTAO MOBILE MENU -->
+      <button id="mobile-menu-toggle" aria-label="Abrir Menu" class="xl:hidden text-slate-800 hover:text-[#C6282D] p-2.5 rounded-lg focus:outline-none bg-slate-100 shrink-0">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop"></div>
+  <div id="mobile-drawer" class="mobile-drawer-content">
+    <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+      <img src="assets/images/logo-mar.png" alt="Instituto MAR" class="h-9 w-auto object-contain">
+      <button id="mobile-drawer-close" aria-label="Fechar Menu" class="w-9 h-9 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center hover:bg-[#C6282D] hover:text-white transition-colors">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+    <div class="p-5 space-y-6 flex-grow overflow-y-auto">
+      <div class="space-y-1">
+        <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50"><i class="fa-solid fa-house text-[#17344D] w-4"></i> Início</a>
+        <a href="diretoria-e-comissoes.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50"><i class="fa-solid fa-users text-[#17344D] w-4"></i> Diretoria e Comissões</a>
+        <a href="representantes.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50"><i class="fa-solid fa-map-location-dot text-[#17344D] w-4"></i> Representantes por Estado</a>
+        <a href="membros-honorarios.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50"><i class="fa-solid fa-award text-[#17344D] w-4"></i> Membros Honorários</a>
+        <a href="noticias.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-bold text-[#17344D] bg-slate-100"><i class="fa-solid fa-newspaper text-[#C6282D] w-4"></i> Notícias e Portal</a>
+        <a href="notas-e-atos-oficiais.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50"><i class="fa-solid fa-scroll text-[#17344D] w-4"></i> Notas e Atos Oficiais</a>
+        <a href="cursos-e-palestras.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50"><i class="fa-solid fa-graduation-cap text-[#17344D] w-4"></i> Cursos e Palestras</a>
+      </div>
+    </div>
+    <div class="p-5 border-t border-slate-200 bg-slate-50 space-y-3">
+      <a href="representantes.html" class="w-full py-3 border-2 border-[#17344D] text-[#17344D] font-bold rounded-lg text-xs flex items-center justify-center gap-2">
+        <i class="fa-solid fa-location-crosshairs text-[#C6282D]"></i> MAR no seu Estado
+      </a>
+      <a href="seja-um-associado.html" class="btn-accent-mar w-full text-xs py-3 justify-center">
+        <i class="fa-solid fa-user-plus mr-1"></i> Seja um Associado
+      </a>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <section class="bg-[#17344D] text-white py-12 sm:py-14 px-4 sm:px-6 md:px-8">
+    <div class="max-w-7xl mx-auto space-y-3 text-center sm:text-left">
+      <span class="badge-mar text-xs uppercase font-bold tracking-widest">IMPRENSA & COMUNICAÇÃO</span>
+      <h1 class="font-title text-2xl sm:text-4xl font-extrabold text-white">Portal de Notícias do Instituto MAR</h1>
+      <p class="text-slate-300 text-xs sm:text-sm max-w-2xl font-light">Informação qualificada, atos institucionais, pronunciamentos e acontecimentos do universo jurídico.</p>
+    </div>
+  </section>
+
+  <!-- NAVEGAÇÃO POR CATEGORIAS -->
+  <div class="bg-white border-b border-slate-200 sticky top-[61px] z-40 px-4">
+    <div class="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto py-3 text-xs font-semibold text-slate-600 no-scrollbar">
+      <button class="px-4 py-1.5 rounded-full bg-[#17344D] text-white shrink-0">Todas</button>
+      <button class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 shrink-0">Institucional</button>
+      <button class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 shrink-0">Advocacia</button>
+      <button class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 shrink-0">Justiça</button>
+      <button class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 shrink-0">Eventos</button>
+      <button class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 shrink-0">Representatividade</button>
+      <button class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 shrink-0">Formação</button>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="py-10 sm:py-12 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full flex-grow space-y-10 sm:space-y-12">
+
+    <!-- MATÉRIA EM DESTAQUE PRINCIPAL -->
+    <div class="md-card overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+      <div class="lg:col-span-7 h-60 sm:h-72 lg:h-auto relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1000&q=80" alt="Destaque Notícias" class="w-full h-full object-cover">
+        <div class="absolute top-3 left-3 bg-[#C6282D] text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Destaque da Semana</div>
+      </div>
+      <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <span class="badge-navy text-[10px]">Institucional</span>
+            <span>•</span>
+            <span>12 de Setembro, 2026</span>
+          </div>
+          <h2 class="font-title font-extrabold text-lg sm:text-xl text-[#17344D] leading-snug">
+            Diretoria do MAR aprova plano nacional de apoio ao jovem advogado e defesa de remuneração digna
+          </h2>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Medida engloba programas de mentoria, acesso facilitado a cursos de extensão e fiscalização de valores mínimos de honorários contratados.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-slate-100">
+          <a href="#" class="btn-primary-mar text-xs py-2.5 px-5 w-full sm:w-auto text-center">Leia a matéria completa <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID DE NOTÍCIAS (CARDS EDITORIAIS COMPLETOS) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      
+      <!-- Card 1 -->
+      <div class="md-card overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80" alt="Notícia 1" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-[#17344D] text-white text-[10px] font-bold px-2 py-0.5 rounded">Formação</div>
+          </div>
+          <div class="p-5 space-y-2">
+            <div class="text-[10px] text-slate-400">09 de Setembro, 2026</div>
+            <h3 class="font-title font-bold text-sm sm:text-base text-[#17344D] leading-snug">
+              Comissão de Prerrogativas divulga relatório sobre atendimento nos balcões virtuais
+            </h3>
+            <p class="text-xs text-slate-600 line-clamp-3">Estudo apontou avanços e gargalos na garantia de atendimento rápido a advogados por magistrados.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0">
+          <a href="#" class="text-xs font-bold text-[#C6282D] hover:underline">Leia mais →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="md-card overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Notícia 2" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-[#17344D] text-white text-[10px] font-bold px-2 py-0.5 rounded">Representatividade</div>
+          </div>
+          <div class="p-5 space-y-2">
+            <div class="text-[10px] text-slate-400">05 de Setembro, 2026</div>
+            <h3 class="font-title font-bold text-sm sm:text-base text-[#17344D] leading-snug">
+              Instituto MAR empossa nova representação seccional em Pernambuco
+            </h3>
+            <p class="text-xs text-slate-600 line-clamp-3">Solenidade em Recife contou com diretores nacionais e advogados pernambucanos.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0">
+          <a href="#" class="text-xs font-bold text-[#C6282D] hover:underline">Leia mais →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="md-card overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Notícia 3" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-[#17344D] text-white text-[10px] font-bold px-2 py-0.5 rounded">Justiça</div>
+          </div>
+          <div class="p-5 space-y-2">
+            <div class="text-[10px] text-slate-400">01 de Setembro, 2026</div>
+            <h3 class="font-title font-bold text-sm sm:text-base text-[#17344D] leading-snug">
+              Artigo: "O futuro da advocacia e a integridade algorítmica"
+            </h3>
+            <p class="text-xs text-slate-600 line-clamp-3">Análise doutrinária aborda reflexos da automação na independência do advogado.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0">
+          <a href="#" class="text-xs font-bold text-[#C6282D] hover:underline">Leia mais →</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="md-card overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Notícia 4" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-[#17344D] text-white text-[10px] font-bold px-2 py-0.5 rounded">Eventos</div>
+          </div>
+          <div class="p-5 space-y-2">
+            <div class="text-[10px] text-slate-400">28 de Agosto, 2026</div>
+            <h3 class="font-title font-bold text-sm sm:text-base text-[#17344D] leading-snug">
+              Fórum de Direito Público discute reformas processuais em Brasília
+            </h3>
+            <p class="text-xs text-slate-600 line-clamp-3">Painel reuniu especialistas para debating sobre eficiência do contencioso administrativo.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0">
+          <a href="#" class="text-xs font-bold text-[#C6282D] hover:underline">Leia mais →</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="md-card overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="Notícia 5" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-[#17344D] text-white text-[10px] font-bold px-2 py-0.5 rounded">Formação</div>
+          </div>
+          <div class="p-5 space-y-2">
+            <div class="text-[10px] text-slate-400">20 de Agosto, 2026</div>
+            <h3 class="font-title font-bold text-sm sm:text-base text-[#17344D] leading-snug">
+              MAR lança edital para mentoria gratuita de novos advogados
+            </h3>
+            <p class="text-xs text-slate-600 line-clamp-3">Iniciativa visa conectar recém-inscritos na OAB com mentores experientes em diversas regiões.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0">
+          <a href="#" class="text-xs font-bold text-[#C6282D] hover:underline">Leia mais →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#17344D] text-slate-300 py-8 px-4 text-center text-xs border-t border-slate-700">
+    <div class="max-w-7xl mx-auto space-y-3">
+      <img src="assets/images/logo-mar.png" alt="Instituto MAR" class="h-9 w-auto bg-white p-1.5 rounded-lg shadow-sm mx-auto">
+      <p>© 2026 Instituto Movimento da Advocacia Renovada — MAR. Todos os direitos reservados.</p>
+      <p class="text-slate-400 font-bold">Ética • Justiça • Compromisso</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
