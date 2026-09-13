@@ -113,4 +113,4 @@ Para subir no domínio de produção **`https://mar-instituto.org.br/`**:
 
 ## ⚖️ Licença
 
-Projeto desenvolvido para o Instituto MAR. Todos os direitos reservados.
+Este projeto está licenciado sob os termos da licença [MIT](LICENSE).
