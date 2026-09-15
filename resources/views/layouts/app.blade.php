@@ -214,7 +214,7 @@
         <div class="space-y-4">
           <img src="{{ $portalLogo }}" alt="{{ $portalName }}" class="h-10 w-auto bg-white p-2 rounded-lg">
           <p class="text-xs text-slate-300 leading-relaxed">
-            O **{{ $portalName }}** é uma instituição dedicada à valorização, modernização e independência da advocacia brasileira.
+            O <b>{{ $portalName }}</b> é uma instituição dedicada à valorização, modernização e independência da advocacia brasileira.
           </p>
         </div>
 
