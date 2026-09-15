@@ -24,6 +24,9 @@ class ContactMessageResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    //preciso esconder esta pagina
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form

@@ -16,11 +16,11 @@ class EventResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
-    protected static ?string $navigationGroup = 'Cursos & Eventos';
+    protected static ?string $navigationGroup = 'Eventos';
 
-    protected static ?string $modelLabel = 'Simpósio / Curso';
+    protected static ?string $modelLabel = 'Evento / Curso';
 
-    protected static ?string $pluralModelLabel = 'Simpósios & Cursos';
+    protected static ?string $pluralModelLabel = 'Eventos & Cursos';
 
     public static function form(Form $form): Form
     {

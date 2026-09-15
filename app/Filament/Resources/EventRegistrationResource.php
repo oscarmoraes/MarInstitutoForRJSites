@@ -16,11 +16,11 @@ class EventRegistrationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationGroup = 'Cursos & Eventos';
+    protected static ?string $navigationGroup = 'Eventos';
 
-    protected static ?string $modelLabel = 'Inscrição em Evento';
+    protected static ?string $modelLabel = 'Inscritos';
 
-    protected static ?string $pluralModelLabel = 'Fila de Inscritos';
+    protected static ?string $pluralModelLabel = 'Inscritos';
 
     public static function form(Form $form): Form
     {

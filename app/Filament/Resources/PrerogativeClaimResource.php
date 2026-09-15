@@ -21,6 +21,9 @@ class PrerogativeClaimResource extends Resource
     protected static ?string $modelLabel = 'Ocorrência de Prerrogativa';
 
     protected static ?string $pluralModelLabel = 'Plantão 24h Prerrogativas';
+    
+    //preciso esconder esta pagina
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {

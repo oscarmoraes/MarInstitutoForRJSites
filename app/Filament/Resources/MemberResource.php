@@ -18,9 +18,9 @@ class MemberResource extends Resource
 
     protected static ?string $navigationGroup = 'Gestão Institucional';
 
-    protected static ?string $modelLabel = 'Associado';
+    protected static ?string $modelLabel = 'Representantes';
 
-    protected static ?string $pluralModelLabel = 'Associados';
+    protected static ?string $pluralModelLabel = 'Representantes';
 
     public static function form(Form $form): Form
     {

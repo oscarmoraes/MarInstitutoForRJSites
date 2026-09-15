@@ -22,6 +22,9 @@ class CertificateResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Certificados Emitidos';
 
+    //preciso esconder esta pagina
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form

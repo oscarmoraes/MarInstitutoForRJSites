@@ -9,6 +9,8 @@ class Member extends Model
 {
     use HasFactory;
 
+    //Representantes e coordenadores regionais do Instituto MAR
+
     protected $fillable = [
         'matricula',
         'nome',
