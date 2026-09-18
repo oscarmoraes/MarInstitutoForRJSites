@@ -199,9 +199,54 @@
           </div>
         </section>
 
+        @if ($event->galleries->isNotEmpty())
+          <section class="space-y-6">
+            <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
+              <i class="fa-solid fa-images text-[#C6282D]"></i> Galeria do Evento
+            </h2>
+
+            @foreach ($event->galleries as $gallery)
+              @if ($gallery->photos->isNotEmpty())
+                <div class="space-y-4">
+                  <div>
+                    <h3 class="font-title font-bold text-lg text-[#17344D]">{{ $gallery->title }}</h3>
+                    @if ($gallery->description)
+                      <p class="text-sm text-slate-600 mt-1">{{ $gallery->description }}</p>
+                    @endif
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    @foreach ($gallery->photos as $photo)
+                      @php
+                        $photoUrl = filter_var($photo->path, FILTER_VALIDATE_URL)
+                            ? $photo->path
+                            : asset('storage/' . ltrim($photo->path, '/'));
+                      @endphp
+                      <figure class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <img src="{{ $photoUrl }}" alt="{{ $photo->title ?: $gallery->title }}" loading="lazy" class="w-full aspect-[4/3] object-cover transition duration-300 group-hover:scale-105">
+                        @if ($photo->title || $photo->description)
+                          <figcaption class="p-3">
+                            @if ($photo->title)
+                              <div class="font-semibold text-sm text-[#17344D]">{{ $photo->title }}</div>
+                            @endif
+                            @if ($photo->description)
+                              <p class="text-xs text-slate-500 mt-1">{{ $photo->description }}</p>
+                            @endif
+                          </figcaption>
+                        @endif
+                      </figure>
+                    @endforeach
+                  </div>
+                </div>
+              @endif
+            @endforeach
+          </section>
+        @endif
+
       </div>
 
       <!-- SIDEBAR DIREITA (BOX DE INSCRIÇÃO STICKY) -->
+       @if($event->data_evento && $event->data_evento->isFuture())
       <aside class="lg:col-span-4 space-y-6">
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xl space-y-6 sticky top-24">
           
@@ -242,6 +287,7 @@
 
         </div>
       </aside>
+      @endif
 
     </div>
   </div>

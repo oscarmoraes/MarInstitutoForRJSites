@@ -4,12 +4,16 @@
 
 @section('content')
   <!-- HERO -->
-  <section class="bg-[#17344D] text-white py-14 sm:py-16 px-4 sm:px-6 md:px-8 border-b border-slate-700">
+  <section class="bg-[#17344D] text-white py-14 sm:py-16 px-4 sm:px-8 md:px-12 border-b border-slate-700">
     <div class="max-w-7xl mx-auto space-y-3 text-center sm:text-left">
-      <span class="badge-mar text-xs uppercase font-bold tracking-widest">FORMAÇÃO CONTINUADA</span>
-      <h1 class="font-title text-2xl sm:text-4xl font-extrabold text-white">Cursos, Palestras e Simpósios</h1>
-      <p class="text-slate-300 text-xs sm:text-base max-w-3xl font-light leading-relaxed">
-        Capacitação técnica de alto nível, debates sobre inovação no Direito e simpósios regionais promovidos pelo Instituto MAR.
+      <span class="badge-mar text-xs uppercase font-bold tracking-widest">MAR em movimento</span>
+      <h1 class="font-title text-2xl sm:text-4xl font-extrabold text-white">Conhecimento que conecta, inspira e transforma</h1>
+      <p class="text-slate-300 text-xs sm:text-base max-w-none font-light leading-relaxed">
+        Os eventos do Instituto Movimento da Advocacia Renovada — MAR são espaços de encontro, aprendizado e construção coletiva. Reunimos profissionais, especialistas e lideranças da advocacia para compartilhar conhecimento, discutir os desafios do presente e refletir sobre os caminhos para o futuro da profissão.
+      </p><p class="text-slate-300 text-xs sm:text-base max-w-none font-light leading-relaxed">
+        Ao longo de nossa atuação, promovemos cursos, palestras, encontros, seminários e simpósios que valorizam a capacitação, a inovação e o diálogo, fortalecendo a advocacia e aproximando seus protagonistas.
+      </p><p class="text-slate-300 text-xs sm:text-base max-w-none font-light leading-relaxed">
+        Porque uma advocacia preparada para o futuro começa com conhecimento, participação e movimento.
       </p>
     </div>
   </section>
@@ -37,7 +41,8 @@
               <span><i class="fa-solid fa-users text-[#C6282D] mr-1"></i> Formato {{ $featuredEvent->formato }}</span>
             </div>
           </div>
-
+          <!-- verfica pela data se o evento está em aberto para inscrição -->
+           @if($featuredEvent->data_evento && $featuredEvent->data_evento->isFuture())
           <div class="lg:col-span-4 bg-white/10 p-6 rounded-xl border border-white/15 backdrop-blur-md text-center space-y-4">
             <div class="text-xs uppercase font-bold text-slate-300 tracking-wider">Garanta sua Vaga</div>
             <div class="text-3xl font-extrabold text-white font-title">{{ $featuredEvent->vagas_totais }} Vagas Totais</div>
@@ -51,6 +56,18 @@
               </button>
             </div>
           </div>
+          @else
+          <div class="lg:col-span-4 bg-white/10 p-6 rounded-xl border border-white/15 backdrop-blur-md text-center space-y-4">
+            <div class="text-xs uppercase font-bold text-slate-300 tracking-wider">Inscrições Encerradas</div>
+            <div class="text-3xl font-extrabold text-white font-title">Evento Finalizado</div>
+            <p class="text-[11px] text-slate-300">As inscrições para este evento foram encerradas. Fique atento às próximas oportunidades.</p>
+            <div class="space-y-2">
+              <a href="{{ route('curso.show', $featuredEvent->slug) }}" class="btn-primary-mar bg-white text-[#17344D] hover:bg-slate-100 font-bold w-full text-xs py-3 block shadow-md">
+                <i class="fa-solid fa-circle-info mr-1"></i> Ver Detalhes da Programação
+              </a>
+            </div>
+          </div>
+          @endif
         </div>
       </div>
     @endif

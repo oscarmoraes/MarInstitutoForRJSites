@@ -23,7 +23,25 @@ class EventController extends Controller
 
     public function show($slug = 'simposio-mar-2026')
     {
-        $event = Event::where('slug', $slug)->first() ?? Event::first();
+        $event = Event::with(['galleries' => function ($query) {
+            $query->where('status', 'published')
+                ->where(function ($query) {
+                    $query->whereNull('published_at')
+                        ->orWhere('published_at', '<=', now());
+                })
+                ->with(['photos' => fn ($query) => $query->orderBy('sort_order')]);
+        }])->where('slug', $slug)->first();
+
+        if (! $event) {
+            $event = Event::with(['galleries' => function ($query) {
+                $query->where('status', 'published')
+                    ->where(function ($query) {
+                        $query->whereNull('published_at')
+                            ->orWhere('published_at', '<=', now());
+                    })
+                    ->with(['photos' => fn ($query) => $query->orderBy('sort_order')]);
+            }])->first();
+        }
         $registeredCount = $event ? $event->registrations()->where('status', 'confirmado')->count() : 24;
 
         return view('curso-detalhe', compact('event', 'registeredCount'));
