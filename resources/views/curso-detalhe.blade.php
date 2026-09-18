@@ -63,11 +63,11 @@
           </div>
           <div>
             <div class="font-bold text-white">{{ $event->local }}</div>
-            <div class="text-[10px] text-slate-400">Presença & Transmissão</div>
+            <div class="text-[10px] text-slate-400">Local</div>
           </div>
         </div>
 
-        <div class="flex items-center gap-2.5">
+        <!-- <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-red-400 text-sm shrink-0">
             <i class="fa-solid fa-award"></i>
           </div>
@@ -75,7 +75,7 @@
             <div class="font-bold text-white">Certificado Oficial</div>
             <div class="text-[10px] text-slate-400">Emitido pelo Instituto MAR</div>
           </div>
-        </div>
+        </div> -->
       </div>
 
     </div>

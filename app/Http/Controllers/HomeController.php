@@ -10,7 +10,12 @@ class HomeController extends Controller
     public function index()
     {
         $featuredEvent = Event::where('ativo', true)->orderBy('data_evento', 'asc')->first();
-        $events = Event::where('ativo', true)->orderBy('data_evento', 'asc')->take(3)->get();
+        //eventos futuros, ordenados por data
+        $events = Event::where('ativo', true)
+            ->where('data_evento', '>=', now())
+            ->orderBy('data_evento', 'asc')
+            ->take(3)
+            ->get();
         $posts = Post::orderBy('publicado_em', 'desc')->take(4)->get();
 
         return view('home', compact('featuredEvent', 'events', 'posts'));

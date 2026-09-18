@@ -231,14 +231,14 @@
   </section>
   @endif
 
-  @if($siteSettings->modulo_cursos ?? true)
+  @if($siteSettings->modulo_cursos && $events->count() > 0)
   <!-- EVENTOS DESTAQUE -->
   <section class="py-16 sm:py-20 px-4 sm:px-6 md:px-8 bg-white">
     <div class="max-w-7xl mx-auto space-y-8">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 border-b border-slate-200 pb-4">
         <div>
           <span class="badge-mar text-xs font-bold uppercase">AGENDA INSTITUCIONAL</span>
-          <h2 class="font-title text-2xl sm:text-3xl font-extrabold text-[#17344D] mt-1">Próximos Eventos & Debates</h2>
+          <h2 class="font-title text-2xl sm:text-3xl font-extrabold text-[#17344D] mt-1">Próximos Eventos</h2>
         </div>
         <a href="{{ route('cursos') }}" class="text-xs font-bold text-[#17344D] hover:text-[#C6282D] flex items-center gap-1">
           Ver todos os eventos <i class="fa-solid fa-arrow-right"></i>
