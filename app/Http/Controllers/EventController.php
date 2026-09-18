@@ -10,8 +10,11 @@ class EventController extends Controller
 {
     public function index()
     {
-        $featuredEvent = Event::where('ativo', true)->where('slug', 'simposio-mar-2026')->first()
-            ?? Event::where('ativo', true)->orderBy('data_evento', 'asc')->first();
+        //$featuredEvent deve ser o proximo evento futuro, ou o evento mais recente se não houver eventos futuros
+        $featuredEvent = Event::where('ativo', true)
+            ->where('data_evento', '>=', now())
+            ->orderBy('data_evento', 'asc')
+            ->first();
 
         $events = Event::where('ativo', true)
             ->when($featuredEvent, fn ($q) => $q->where('id', '!=', $featuredEvent->id))
