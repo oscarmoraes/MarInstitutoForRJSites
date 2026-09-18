@@ -18,9 +18,14 @@ class BoardMemberResource extends Resource
 
     protected static ?string $navigationGroup = 'Gestão Institucional';
 
-    protected static ?string $modelLabel = 'Diretor / Representante';
+    protected static ?string $modelLabel = 'Diretor';
 
-    protected static ?string $pluralModelLabel = 'Diretoria & Representantes';
+    protected static ?string $pluralModelLabel = 'Diretoria Executiva';
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 
     public static function form(Form $form): Form
     {
@@ -34,14 +39,19 @@ class BoardMemberResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('oab')
                     ->label('Nº OAB'),
-                Forms\Components\TextInput::make('uf')
-                    ->label('UF Representada'),
+                // Forms\Components\TextInput::make('uf')
+                //     ->label('UF Representada'),
+                Forms\Components\Select::make('state_id')
+                    ->label('Estado Representado')
+                    ->relationship('state', 'letter')
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\Select::make('tipo')
                     ->label('Tipo de Função')
                     ->options([
                         'DIRETORIA' => 'DIRETORIA EXECUTIVA',
                         'COMISSAO' => 'COMISSÃO TEMÁTICA',
-                        'REPRESENTANTE' => 'REPRESENTANTE UF',
+                        // 'REPRESENTANTE' => 'REPRESENTANTE UF',
                         'HONORARIO' => 'MEMBRO HONORÁRIO',
                     ])
                     ->required(),

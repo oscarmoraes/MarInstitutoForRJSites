@@ -25,9 +25,15 @@ class Member extends Model
         'validade',
         'foto_url',
         'hash_validacao',
+        'state_id',
     ];
 
     protected $casts = [
         'validade' => 'date',
     ];
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
 }

@@ -24,6 +24,18 @@ return new class extends Migration
             $table->string('phone_primary', 20);
             $table->string('phone_secondary', 20)->nullable();
             $table->string('photo_path')->nullable();
+
+            //address
+            $table->string('street')->nullable()->default(null);
+            $table->string('number')->nullable()->default(null);
+            $table->string('complement')->nullable()->default(null);
+            $table->string('neighborhood')->nullable()->default(null);
+            $table->unsignedInteger('state_id')->nullable()->default(null);
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('no action')->onUpdate('no action');
+            $table->unsignedInteger('city_id')->nullable()->default(null);
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('no action')->onUpdate('no action');
+            $table->string('cep')->nullable()->default(null);
+
             $table->enum('status', [
                 'pending',
                 'active',

@@ -41,9 +41,7 @@ Route::post('/cursos-e-palestras/inscrever', [EventController::class, 'register'
 Route::post('/api/inscrever', [EventController::class, 'register'])->name('api.inscrever');
 
 // Associação e Atendimento
-Route::get('/seja-um-associado', function () {
-    return view('seja-um-associado');
-})->name('associar');
+Route::get('/seja-um-associado', [AssociationController::class, 'index'])->name('associar');
 Route::post('/seja-um-associado', [AssociationController::class, 'store'])->name('associar.store');
 
 Route::get('/contato', function () {

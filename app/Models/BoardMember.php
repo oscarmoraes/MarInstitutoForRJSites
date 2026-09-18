@@ -18,5 +18,11 @@ class BoardMember extends Model
         'foto_url',
         'bio',
         'ordem',
+        'state_id',
     ];
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
 }

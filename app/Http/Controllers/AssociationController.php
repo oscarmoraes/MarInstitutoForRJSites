@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Member;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class AssociationController extends Controller
 {
+    public function index()
+    {
+        $oabStates = State::orderBy('letter')->get();
+        $cities = City::orderBy('name')->get();
+        return view('seja-um-associado', [
+            'oabStates' => $oabStates,
+            'cities' => $cities
+        ]);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

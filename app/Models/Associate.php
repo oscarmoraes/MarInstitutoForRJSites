@@ -18,12 +18,20 @@ class Associate extends Model
         'full_name',
         'cpf',
         'oab_number',
-        'oab_uf',
+        'oab_state_id',
         'birth_date',
         'email',
         'phone_primary',
         'phone_secondary',
+        'phone_office',
         'photo_path',
+        'street',
+        'number',
+        'complement',
+        'neighborhood',
+        'state_id',
+        'city_id',
+        'cep',
         'status',
         'registration_ip',
         'user_agent',
@@ -47,6 +55,21 @@ class Associate extends Model
     public function approver()
     {
         return $this->belongsTo(User::class, 'approved_by');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function oabState()
+    {
+        return $this->belongsTo(State::class, 'oab_state_id');
     }
 
     /**

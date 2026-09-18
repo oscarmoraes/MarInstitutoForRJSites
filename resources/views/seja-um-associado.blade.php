@@ -29,7 +29,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
       
       <!-- COLUNA BENEFÍCIOS -->
-      <div class="lg:col-span-6 space-y-6">
+      <div class="lg:col-span-12 space-y-12">
         <div class="border-b border-slate-200 pb-3">
           <span class="badge-navy text-[10px] font-bold uppercase">POR QUE SE ASSOCIAR</span>
           <h2 class="font-title text-2xl font-extrabold text-[#17344D] mt-1">Benefícios do Associado MAR</h2>
@@ -69,7 +69,7 @@
       </div>
 
       <!-- COLUNA FORMULÁRIO -->
-      <div class="lg:col-span-6">
+      <div class="lg:col-span-12">
         <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xl space-y-6">
           <div class="border-b border-slate-100 pb-4">
             <span class="badge-mar text-[10px] font-bold uppercase">CADASTRO DE SOLICITAÇÃO</span>
@@ -111,54 +111,117 @@
           <form id="associado-form" method="POST" action="{{ route('associar.store') }}" class="space-y-4">
             @csrf
             <div>
-              <label for="nome" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Nome Completo *</label>
-              <input type="text" id="nome" name="nome" value="{{ old('nome') }}" required placeholder="Digite seu nome completo" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              <label for="full_name" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Nome Completo *</label>
+              <input type="text" id="full_name" name="full_name" value="{{ old('full_name') }}" required placeholder="Digite seu nome completo" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="email" class="block text-xs font-bold text-[#17344D] uppercase mb-1">E-mail Profissional *</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required placeholder="seuemail@adv.br" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+                <label for="cpf" class="block text-xs font-bold text-[#17344D] uppercase mb-1">CPF *</label>
+                <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" required placeholder="123.456.789-00" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
               </div>
               <div>
-                <label for="whatsapp" class="block text-xs font-bold text-[#17344D] uppercase mb-1">WhatsApp (DDD) *</label>
-                <input type="text" id="whatsapp" name="whatsapp" value="{{ old('whatsapp') }}" required placeholder="(11) 99999-9999" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+                <label for="birth_date" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Data de Nascimento *</label>
+                <input type="date" id="birth_date" name="birth_date" value="{{ old('birth_date') }}" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label for="email" class="block text-xs font-bold text-[#17344D] uppercase mb-1">E-mail Profissional *</label>
+              <input type="email" id="email" name="email" value="{{ old('email') }}" required placeholder="seuemail@adv.br" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 ">
+              <div>
+                <label for="phone_primary" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Telefone Principal (DDD) *</label>
+                <input type="text" id="phone_primary" name="phone_primary" value="{{ old('phone_primary') }}" required placeholder="(11) 99999-9999" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+              <div>
+                <label for="phone_secondary" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Telefone Secundário (DDD)</label>
+                <input type="text" id="phone_secondary" name="phone_secondary" value="{{ old('phone_secondary') }}" placeholder="(11) 99999-9999" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+              <div>
+                <label for="phone_office" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Telefone do Escritório (DDD)</label>
+                <input type="text" id="phone_office" name="phone_office" value="{{ old('phone_office') }}" placeholder="(11) 99999-9999" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+            </div>
+
+            <div class="border-b border-slate-100 pb-4"></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="oab" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Nº OAB *</label>
                 <input type="text" id="oab" name="oab" value="{{ old('oab') }}" required placeholder="123456" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
               </div>
               <div>
-                <label for="uf" class="block text-xs font-bold text-[#17344D] uppercase mb-1">UF OAB *</label>
-                <select id="uf" name="uf" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D] bg-white">
-                  <option value="">Selecione</option>
-                  <option value="SP" {{ old('uf') == 'SP' ? 'selected' : '' }}>SP - São Paulo</option>
-                  <option value="RJ" {{ old('uf') == 'RJ' ? 'selected' : '' }}>RJ - Rio de Janeiro</option>
-                  <option value="MG" {{ old('uf') == 'MG' ? 'selected' : '' }}>MG - Minas Gerais</option>
-                  <option value="DF" {{ old('uf') == 'DF' ? 'selected' : '' }}>DF - Distrito Federal</option>
-                  <option value="BA" {{ old('uf') == 'BA' ? 'selected' : '' }}>BA - Bahia</option>
-                  <option value="RS" {{ old('uf') == 'RS' ? 'selected' : '' }}>RS - Rio Grande do Sul</option>
-                  <option value="PR" {{ old('uf') == 'PR' ? 'selected' : '' }}>PR - Paraná</option>
-                  <option value="PE" {{ old('uf') == 'PE' ? 'selected' : '' }}>PE - Pernambuco</option>
-                  <option value="CE" {{ old('uf') == 'CE' ? 'selected' : '' }}>CE - Ceará</option>
-                  <option value="SC" {{ old('uf') == 'SC' ? 'selected' : '' }}>SC - Santa Catarina</option>
-                  <option value="GO" {{ old('uf') == 'GO' ? 'selected' : '' }}>GO - Goiás</option>
-                  <option value="ES" {{ old('uf') == 'ES' ? 'selected' : '' }}>ES - Espírito Santo</option>
-                  <option value="OUTRO" {{ old('uf') == 'OUTRO' ? 'selected' : '' }}>Outro Estado</option>
+                <abel form="oab_state_id" class="block text-xs font-bold text-[#17344D] uppercase mb-1">UF OAB *</label>
+                <select id="oab_state_id" name="oab_state_id" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D] bg-white">
+                  <option value="">Selecione a UF</option>
+                  @foreach($oabStates as $state)
+                    <option value="{{ $state->id }}" {{ old('oab_state_id') == $state->id ? 'selected' : '' }}>{{ $state->letter }}</option>
+                  @endforeach
                 </select>
               </div>
-              <div>
+              <!-- <div>
                 <label for="categoria" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Categoria *</label>
                 <select id="categoria" name="categoria" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D] bg-white">
                   <option value="Advogado Efetivo" {{ old('categoria') == 'Advogado Efetivo' ? 'selected' : '' }}>Advogado Efetivo</option>
                   <option value="Estudante / Acadêmico" {{ old('categoria') == 'Estudante / Acadêmico' ? 'selected' : '' }}>Estudante / Acadêmico</option>
                   <option value="Membro Honorário" {{ old('categoria') == 'Membro Honorário' ? 'selected' : '' }}>Membro Honorário</option>
                 </select>
+              </div> -->
+            </div>
+
+            <div class="border-b border-slate-100 pb-4"></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cep" class="block text-xs font-bold text-[#17344D] uppercase mb-1">CEP *</label>
+                <input type="text" id="cep" name="cep" value="{{ old('cep') }}" required placeholder="12345-678" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+              <div>
+                <label for="state_id" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Estado *</label>
+                <select id="state_id" name="state_id" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D] bg-white">
+                  <option value="">Selecione o Estado</option>
+                  @foreach($oabStates as $state)
+                    <option value="{{ $state->id }}" {{ old('state_id') == $state->id ? 'selected' : '' }}>{{ $state->letter }}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
+
+            <div>
+              <label for="street" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Endereço (Rua / Av.) *</label>
+              <input type="text" id="street" name="street" value="{{ old('street') }}" required placeholder="Digite o endereço" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="number" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Número *</label>
+                <input type="text" id="number" name="number" value="{{ old('number') }}" required placeholder="123" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+              <div>
+                <label for="complement" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Complemento</label>
+                <input type="text" id="complement" name="complement" value="{{ old('complement') }}" placeholder="Apto, Bloco, Sala, etc." class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="neighborhood" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Bairro *</label>
+                <input type="text" id="neighborhood" name="neighborhood" value="{{ old('neighborhood') }}" required placeholder="Digite o bairro" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+              </div>
+              <div>
+                <label for="city_id" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Cidade *</label>
+                <select id="city_id" name="city_id" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D] bg-white">
+                  <option value="">Selecione a Cidade</option>
+                  @foreach($cities as $city)
+                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            
 
             <button type="submit" id="btnAssociarSubmit" class="btn-accent-mar w-full text-xs py-4 shadow-lg flex items-center justify-center gap-2">
               <i class="fa-solid fa-paper-plane mr-1.5"></i> Enviar Solicitação de Associação

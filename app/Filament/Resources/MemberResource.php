@@ -44,9 +44,12 @@ class MemberResource extends Resource
                 Forms\Components\TextInput::make('oab')
                     ->label('Nº OAB')
                     ->required(),
-                Forms\Components\TextInput::make('uf')
-                    ->label('UF OAB')
-                    ->required(),
+                // select box de state_id ja carregado sem serarch
+                Forms\Components\Select::make('state_id')
+                    ->label('UF Representada')
+                    ->relationship('state', 'letter')
+                    ->preload(),
+
                 Forms\Components\Select::make('categoria')
                     ->label('Categoria de Associação')
                     ->options([
@@ -68,8 +71,12 @@ class MemberResource extends Resource
                 Forms\Components\DatePicker::make('validade')
                     ->label('Validade da Anuidade')
                     ->required(),
-                Forms\Components\TextInput::make('foto_url')
-                    ->label('URL da Foto de Perfil'),
+                Forms\Components\FileUpload::make('foto_url')
+                    ->label('Foto de Perfil')
+                    ->directory('members')
+                    ->maxSize(5120)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                    ->image(),
                 Forms\Components\TextInput::make('hash_validacao')
                     ->label('Código Hash de Validação'),
             ]);

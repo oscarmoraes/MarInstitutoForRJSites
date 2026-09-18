@@ -68,9 +68,9 @@
         @endif
 
         <!-- Dropdown Conteúdo -->
-        @if(($siteSettings->modulo_noticias ?? true) || ($siteSettings->modulo_atos_oficiais ?? true) || ($siteSettings->modulo_cursos ?? true) || ($siteSettings->modulo_certificados ?? true))
+        <!-- @if(($siteSettings->modulo_noticias ?? true) || ($siteSettings->modulo_atos_oficiais ?? true) || ($siteSettings->modulo_cursos ?? true) || ($siteSettings->modulo_certificados ?? true))
           <div class="nav-dropdown group">
-            <button class="{{ request()->routeIs('noticias', 'notas-oficiais', 'cursos', 'curso.show', 'noticia.show') ? 'text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1' : '' }} hover:text-[#17344D] py-2 flex items-center gap-1.5 focus:outline-none">
+            <button class="{{ request()->routeIs('notas-oficiais') ? 'text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1' : '' }} hover:text-[#17344D] py-2 flex items-center gap-1.5 focus:outline-none">
               {{ $siteSettings->menu_conteudo ?? 'Conteúdo' }} <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform"></i>
             </button>
             <div class="nav-dropdown-menu">
@@ -90,6 +90,18 @@
               </div>
             </div>
           </div>
+        @endif -->
+
+        @if($siteSettings->modulo_noticias ?? true)
+          <a href="{{ route('noticias') }}" class="{{ request()->routeIs('noticias') ? 'text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1' : 'hover:text-[#17344D] py-2 transition-colors' }}">
+            <!-- <i class="fa-solid fa-newspaper text-[#17344D] w-4 mr-2"></i>  -->
+            {{ $siteSettings->menu_noticias ?? 'Notícias' }}</a>
+        @endif
+
+        @if($siteSettings->modulo_cursos ?? true)
+          <a href="{{ route('cursos') }}" class="{{ request()->routeIs('cursos') ? 'text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1' : 'hover:text-[#17344D] py-2 transition-colors' }}">
+            <!-- <i class="fa-solid fa-graduation-cap text-[#17344D] w-4 mr-2"></i>  -->
+            {{ $siteSettings->menu_cursos ?? 'Eventos' }}</a>
         @endif
 
         @if($siteSettings->modulo_prerrogativas ?? true)
