@@ -64,7 +64,7 @@ class AssociateResource extends Resource
                             ->label('Foto do Perfil')
                             ->image()
                             ->directory('associates')
-                            ->maxSize(5120)
+                            ->maxSize(10240)
                             ->acceptedFileTypes(['image/jpeg', 'image/png']),
                     ])
                     ->columns(2),

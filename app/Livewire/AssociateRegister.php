@@ -80,7 +80,7 @@ class AssociateRegister extends Component
         'phone_secondary.regex' => 'O telefone deve estar no formato (XX) 9XXXX-XXXX ou (XX) XXXX-XXXX.',
         'photo_path.required' => 'A foto é obrigatória.',
         'photo_path.image' => 'O arquivo deve ser uma imagem.',
-        'photo_path.max' => 'A imagem não pode exceder 10MB.',
+        'photo_path.max' => 'A imagem não pode exceder 25MB.',
         'lgpd_acceptance.required' => 'Você deve aceitar os termos de LGPD.',
     ];
 
