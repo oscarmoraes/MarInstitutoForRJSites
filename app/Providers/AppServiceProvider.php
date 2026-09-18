@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
 
+        //Registrar observers
+        // \App\Models\Associate::observe(\App\Observers\AssociateObserver::class);
+
         try {
             if (\Illuminate\Support\Facades\Schema::hasTable('site_settings')) {
                 \Illuminate\Support\Facades\View::share('siteSettings', \App\Models\SiteSetting::getSettings());

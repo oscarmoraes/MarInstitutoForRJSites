@@ -43,6 +43,11 @@ class Associate extends Model
         'notes'
     ];
 
+    public function getPhonePrimaryFormattedAttribute()
+    {
+        return $this->formatPhoneNumber($this->phone_primary);
+    }
+
     protected $casts = [
         'status' => AssociateStatus::class,
         'birth_date' => 'date',
@@ -70,6 +75,19 @@ class Associate extends Model
     public function oabState()
     {
         return $this->belongsTo(State::class, 'oab_state_id');
+    }
+
+    private function formatPhoneNumber($number)
+    {
+        $number = preg_replace('/\D/', '', $number);
+
+        if (strlen($number) === 10) {
+            return preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $number);
+        } elseif (strlen($number) === 11) {
+            return preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $number);
+        }
+
+        return $number;
     }
 
     /**

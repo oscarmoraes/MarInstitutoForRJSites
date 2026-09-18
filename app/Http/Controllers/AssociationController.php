@@ -11,12 +11,7 @@ class AssociationController extends Controller
 {
     public function index()
     {
-        $oabStates = State::orderBy('letter')->get();
-        $cities = City::orderBy('name')->get();
-        return view('seja-um-associado', [
-            'oabStates' => $oabStates,
-            'cities' => $cities
-        ]);
+        return view('seja-um-associado');
     }
 
     public function store(Request $request)

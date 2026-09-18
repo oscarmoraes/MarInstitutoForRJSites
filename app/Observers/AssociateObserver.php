@@ -10,6 +10,19 @@ class AssociateObserver
     {
         // Gerar UUID antes de criar o registro
         $associate->uuid = (string) \Illuminate\Support\Str::orderedUuid();
+
+        // limpar a formatacao dos telefones
+        $associate->phone_primary = preg_replace('/\D/', '', $associate->phone_primary);
+        $associate->phone_secondary = preg_replace('/\D/', '', $associate->phone_secondary);
+        $associate->phone_office = preg_replace('/\D/', '', $associate->phone_office);
+    }
+
+    public function updating(Associate $associate)
+    {
+        // limpar a formatacao dos telefones
+        $associate->phone_primary = preg_replace('/\D/', '', $associate->phone_primary);
+        $associate->phone_secondary = preg_replace('/\D/', '', $associate->phone_secondary);
+        $associate->phone_office = preg_replace('/\D/', '', $associate->phone_office);
     }
 
     /**
@@ -25,7 +38,7 @@ class AssociateObserver
      */
     public function updated(Associate $associate): void
     {
-        //
+        
     }
 
     /**

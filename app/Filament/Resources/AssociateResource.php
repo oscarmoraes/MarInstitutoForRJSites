@@ -73,11 +73,18 @@ class AssociateResource extends Resource
                         Forms\Components\TextInput::make('oab_number')
                             ->label('Nº OAB')
                             ->maxLength(20),
-                        Forms\Components\TextInput::make('oab_uf')
+                        Forms\Components\Select::make('oab_state_id')
                             ->label('UF OAB')
-                            ->maxLength(2),
+                            ->options(State::query()->pluck('letter', 'id')->toArray())
+                            ->searchable()
+                            ->required(),
+                        Forms\Components\TextInput::make('phone_office')
+                            ->label('Telefone Comercial')
+                            ->tel()
+                            ->mask('(99) 99999-9999')
+                            ->maxLength(20),
                     ])
-                    ->columns(2),
+                    ->columns(3),
                 Forms\Components\Section::make('Endereço')
                     ->schema([
                         Forms\Components\TextInput::make('cep')
@@ -203,10 +210,10 @@ class AssociateResource extends Resource
                 Tables\Columns\TextColumn::make('full_name')
                     ->label('Nome Completo')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('oab_uf')
+                Tables\Columns\TextColumn::make('oabState.letter')
                     ->label('UF OAB')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('phone_primary')
+                Tables\Columns\TextColumn::make('phone_primary_formatted')
                     ->label('Telefone Principal')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
