@@ -27,7 +27,7 @@ class EventResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('titulo')
-                    ->label('Título do Simpósio')
+                    ->label('Título do Evento')
                     ->required()
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
@@ -35,12 +35,37 @@ class EventResource extends Resource
                     ->label('Slug de URL')
                     ->required()
                     ->unique(Event::class, 'slug', ignoreRecord: true),
+                Forms\Components\TextInput::make('subtitulo')
+                    ->label('Subtítulo do Evento'),
                 Forms\Components\DateTimePicker::make('data_evento')
                     ->label('Data e Horário do Evento')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('inicio')
+                    ->label('Início do Evento')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('fim')
+                    ->label('Fim do Evento')
+                    ->required(),
+                Forms\Components\Select::make('state_id')
+                    ->label('Estado')
+                    ->relationship('state', 'letter')
+                    ->required(),
+                Forms\Components\Select::make('city_id')
+                    ->label('Cidade')
+                    ->relationship('city', 'title')
                     ->required(),
                 Forms\Components\TextInput::make('local')
                     ->label('Local / Transmissão')
                     ->required(),
+                Forms\Components\TextInput::make('endereco')
+                    ->label('Endereço do Evento'),
+                Forms\Components\Toggle::make('exige_inscricao')
+                    ->label('Exige Inscrição')
+                    ->default(true),
+                Forms\Components\DateTimePicker::make('inscricoes_inicio')
+                    ->label('Início das Inscrições'),
+                Forms\Components\DateTimePicker::make('inscricoes_fim')
+                    ->label('Fim das Inscrições'),
                 Forms\Components\TextInput::make('vagas_totais')
                     ->label('Vagas Totais')
                     ->numeric()
@@ -57,11 +82,20 @@ class EventResource extends Resource
                 Forms\Components\TextInput::make('carga_horaria')
                     ->label('Carga Horária para Certificado')
                     ->default('10 Horas Acadêmicas'),
+                Forms\Components\TextInput::make('carga_horaria_estudante')
+                    ->label('Carga Horária para Certificado (Estudante)')
+                    ->default('5 Horas Acadêmicas'),
+                Forms\Components\Toggle::make('possui_certificado')
+                    ->label('Possui Certificado')
+                    ->default(false),
+                Forms\Components\TextInput::make('resumo')
+                    ->label('Resumo do Evento')
+                    ->maxLength(255),
                 Forms\Components\Textarea::make('descricao')
                     ->label('Descrição do Evento')
                     ->rows(4),
                 Forms\Components\Toggle::make('ativo')
-                    ->label('Publicado / Inscrições Abertas')
+                    ->label('Publicado')
                     ->default(true),
             ]);
     }

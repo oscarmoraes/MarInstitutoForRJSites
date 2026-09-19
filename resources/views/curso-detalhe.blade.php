@@ -10,7 +10,7 @@
       <span>/</span>
       <a href="{{ route('cursos') }}" class="hover:text-white">Cursos e Palestras</a>
       <span>/</span>
-      <span class="text-white font-semibold truncate max-w-xs sm:max-w-md">Simpósio Instituto MAR 2026</span>
+      <span class="text-white font-semibold truncate max-w-xs sm:max-w-md">Evento Instituto MAR 2026</span>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
           <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> INSCRIÇÕES ABERTAS
         </span>
         <span class="bg-white/10 text-slate-200 border border-white/15 text-xs font-semibold px-3 py-1.5 rounded-full">
-          Formato {{ $event->formato ?? 'Híbrido' }}
+          Formato {{ $event->formato ?? 'Presencial' }}
         </span>
       </div>
 
@@ -32,7 +32,7 @@
       </h1>
 
       <p class="text-slate-300 text-xs sm:text-base lg:text-lg max-w-3xl font-light leading-relaxed">
-        {{ $event->descricao }}
+        {{ $event->subtitulo }}
       </p>
 
       <!-- BARRA DE DATAS E LOCAL -->
@@ -91,15 +91,10 @@
         <!-- SOBRE O EVENTO -->
         <section class="space-y-4">
           <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
-            <i class="fa-solid fa-circle-info text-[#C6282D]"></i> Sobre o Simpósio
+            <i class="fa-solid fa-circle-info text-[#C6282D]"></i> Sobre o Evento
           </h2>
           <div class="prose max-w-none text-slate-700 text-xs sm:text-base leading-relaxed space-y-4">
-            <p>
-              O <strong>Simpósio Instituto MAR — Advocacia Renovada 2026</strong> reúne os mais destacados nomes do Direito constitucional, processual e da advocacia privada para um dia inteiro de imersão técnica e estratégica.
-            </p>
-            <p>
-              O objetivo do simpósio é fornecer pareceres práticos, estratégias de defesa de honorários e diretrizes éticas para a integração de ferramentas digitais e Inteligência Artificial na rotina jurídica dos escritórios.
-            </p>
+            {!! $event->descricao !!}
           </div>
         </section>
 
@@ -110,9 +105,27 @@
           </h2>
 
           <div class="space-y-4">
+
+            @foreach ($event->schedules as $programacao)
+              <div class="md-card p-5 space-y-3 border-l-4 {{ $loop->iteration % 2 == 0 ? 'border-l-[#C6282D]' : 'border-l-[#17344D]' }}">
+                <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
+                  <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> {{ $programacao->inicio }} - {{ $programacao->fim }}</span>
+                  <span class="text-slate-400 uppercase text-[10px]">AA {{ $programacao->tipo }}</span>
+                </div>
+                <h3 class="font-title font-bold text-base text-[#17344D]">
+                  {{ $programacao->titulo }}
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {{ $programacao->descricao }}
+                </p>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {{ $programacao->speaker->nome }}
+                </p>
+              </div>
+            @endforeach
+
             
-            <!-- Painel 1 -->
-            <div class="md-card p-5 space-y-3 border-l-4 border-l-[#17344D]">
+            <!-- <div class="md-card p-5 space-y-3 border-l-4 border-l-[#17344D]">
               <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
                 <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 09:00 - 10:30</span>
                 <span class="text-slate-400 uppercase text-[10px]">Painel Abertura</span>
@@ -125,7 +138,7 @@
               </p>
             </div>
 
-            <!-- Painel 2 -->
+            
             <div class="md-card p-5 space-y-3 border-l-4 border-l-[#C6282D]">
               <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
                 <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 10:45 - 12:30</span>
@@ -139,7 +152,7 @@
               </p>
             </div>
 
-            <!-- Painel 3 -->
+            
             <div class="md-card p-5 space-y-3 border-l-4 border-l-[#17344D]">
               <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
                 <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 14:00 - 16:00</span>
@@ -153,7 +166,7 @@
               </p>
             </div>
 
-            <!-- Painel 4 -->
+            
             <div class="md-card p-5 space-y-3 border-l-4 border-l-[#C6282D]">
               <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
                 <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 16:30 - 18:00</span>
@@ -165,13 +178,13 @@
               <p class="text-xs text-slate-600 leading-relaxed">
                 Apresentação das diretrizes nacionais aprovadas durante o simpósio.
               </p>
-            </div>
+            </div> -->
 
           </div>
         </section>
 
         <!-- PALESTRANTES CONFIRMADOS -->
-        <section class="space-y-6">
+        <!-- <section class="space-y-6">
           <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
             <i class="fa-solid fa-users text-[#C6282D]"></i> Palestrantes de Destaque
           </h2>
@@ -197,7 +210,7 @@
             </div>
 
           </div>
-        </section>
+        </section> -->
 
         @if ($event->galleries->isNotEmpty())
           <section class="space-y-6">
@@ -275,15 +288,17 @@
           </div>
 
           <!-- BOTÃO DE AÇÃO PRINCIPAL -->
+           @if($event->exige_inscricao)
           <button onclick="openLeadModal()" class="btn-accent-mar w-full text-xs py-4 shadow-xl text-center">
             <i class="fa-solid fa-pen-to-square mr-1.5"></i> Inscrever-se Gratuitamente
           </button>
+          @endif
 
-          <div class="space-y-2 pt-2 border-t border-slate-100 text-xs text-slate-600">
+          <!-- <div class="space-y-2 pt-2 border-t border-slate-100 text-xs text-slate-600">
             <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-600"></i> Confirmação imediata via WhatsApp</div>
             <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-600"></i> Certificado de 10h incluso</div>
             <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-600"></i> Acesso à gravação aos associados</div>
-          </div>
+          </div> -->
 
         </div>
       </aside>
