@@ -106,7 +106,7 @@
 
           <div class="space-y-4">
 
-            @foreach ($event->schedules()->orderBy('inicio')->get() as $programacao)
+            @foreach ($event->schedules()->orderBy('ordem','ASC')->get() as $programacao)
               <div class="md-card p-5 space-y-3 border-l-4 {{ $loop->iteration % 2 == 0 ? 'border-l-[#C6282D]' : 'border-l-[#17344D]' }}">
                 <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
                   <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> {{ $programacao->inicio->format('H:i') }} - {{ $programacao->fim->format('H:i') }}</span>
