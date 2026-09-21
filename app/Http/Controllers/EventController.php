@@ -45,7 +45,7 @@ class EventController extends Controller
                     ->with(['photos' => fn ($query) => $query->orderBy('sort_order')]);
             }])->first();
         }
-        $registeredCount = $event ? $event->registrations()->where('status', 'confirmado')->count() : 24;
+        $registeredCount = $event ? $event->registrations()->where('status', 'confirmado')->count() : 0;
 
         return view('curso-detalhe', compact('event', 'registeredCount'));
     }

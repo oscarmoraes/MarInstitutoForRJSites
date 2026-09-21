@@ -260,7 +260,7 @@
                     {{ $event->titulo }}
                   </a>
                 </h3>
-                <p class="text-xs text-slate-600 line-clamp-3">{{ $event->descricao }}</p>
+                <p class="text-xs text-slate-600 line-clamp-3">{{ $event->subtitulo }}</p>
               </div>
             </div>
             <div class="p-5 pt-0 border-t border-slate-100 mt-3 flex justify-between items-center text-xs">

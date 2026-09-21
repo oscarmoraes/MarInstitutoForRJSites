@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-2.5">
+        <!-- <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-red-400 text-sm shrink-0">
             <i class="fa-solid fa-clock"></i>
           </div>
@@ -55,7 +55,7 @@
             <div class="font-bold text-white">{{ $event->data_evento ? $event->data_evento->format('H:i') . 'h' : '09:00' }}</div>
             <div class="text-[10px] text-slate-400">Carga: {{ $event->carga_horaria }}</div>
           </div>
-        </div>
+        </div> -->
 
         <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-red-400 text-sm shrink-0">
@@ -106,11 +106,11 @@
 
           <div class="space-y-4">
 
-            @foreach ($event->schedules as $programacao)
+            @foreach ($event->schedules()->orderBy('inicio')->get() as $programacao)
               <div class="md-card p-5 space-y-3 border-l-4 {{ $loop->iteration % 2 == 0 ? 'border-l-[#C6282D]' : 'border-l-[#17344D]' }}">
                 <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
-                  <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> {{ $programacao->inicio }} - {{ $programacao->fim }}</span>
-                  <span class="text-slate-400 uppercase text-[10px]">AA {{ $programacao->tipo }}</span>
+                  <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> {{ $programacao->inicio->format('H:i') }} - {{ $programacao->fim->format('H:i') }}</span>
+                  <!-- <span class="text-slate-400 uppercase text-[10px]">Presencial</span> -->
                 </div>
                 <h3 class="font-title font-bold text-base text-[#17344D]">
                   {{ $programacao->titulo }}
