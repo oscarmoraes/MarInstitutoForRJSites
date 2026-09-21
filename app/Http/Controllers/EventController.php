@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventRegistration;
+use App\Models\EventSchedule;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -47,7 +48,9 @@ class EventController extends Controller
         }
         $registeredCount = $event ? $event->registrations()->where('status', 'confirmado')->count() : 0;
 
-        return view('curso-detalhe', compact('event', 'registeredCount'));
+        $schedules = EventSchedule::where('event_id', $event->id)->orderBy('ordem', 'ASC')->get();
+
+        return view('curso-detalhe', compact('event', 'registeredCount', 'schedules'));
     }
 
     public function register(Request $request)

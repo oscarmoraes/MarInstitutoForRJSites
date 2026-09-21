@@ -106,7 +106,7 @@
 
           <div class="space-y-4">
 
-            @foreach ($event->schedules()->orderBy('ordem','ASC')->get() as $programacao)
+            @foreach ($schedules as $programacao)
               <div class="md-card p-5 space-y-3 border-l-4 {{ $loop->iteration % 2 == 0 ? 'border-l-[#C6282D]' : 'border-l-[#17344D]' }}">
                 <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
                   <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> {{ $programacao->inicio->format('H:i') }} - {{ $programacao->fim->format('H:i') }}</span>
@@ -123,62 +123,6 @@
                 </p>
               </div>
             @endforeach
-
-            
-            <!-- <div class="md-card p-5 space-y-3 border-l-4 border-l-[#17344D]">
-              <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
-                <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 09:00 - 10:30</span>
-                <span class="text-slate-400 uppercase text-[10px]">Painel Abertura</span>
-              </div>
-              <h3 class="font-title font-bold text-base text-[#17344D]">
-                Mesa de Abertura: O Papel Institucional da Advocacia na Defesa da Democracia
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Palestrantes: Dr. Carlos Eduardo Mendonça (Pres. MAR) & Convidado de Honra.
-              </p>
-            </div>
-
-            
-            <div class="md-card p-5 space-y-3 border-l-4 border-l-[#C6282D]">
-              <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
-                <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 10:45 - 12:30</span>
-                <span class="text-slate-400 uppercase text-[10px]">Painel 02</span>
-              </div>
-              <h3 class="font-title font-bold text-base text-[#17344D]">
-                Estratégias Práticas para Defesa e Fixação de Honorários de Sucumbência (Art. 85 do CPC)
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Palestrantes: Dra. Mariana Alencar Fonseca & Dra. Juliana Alvarenga.
-              </p>
-            </div>
-
-            
-            <div class="md-card p-5 space-y-3 border-l-4 border-l-[#17344D]">
-              <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
-                <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 14:00 - 16:00</span>
-                <span class="text-slate-400 uppercase text-[10px]">Painel 03</span>
-              </div>
-              <h3 class="font-title font-bold text-base text-[#17344D]">
-                Inteligência Artificial, Produtividade e os Limites Éticos na Advocacia Contemporânea
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Palestrantes: Dr. Lucas Vasconcelos & Especialistas em Direito Digital.
-              </p>
-            </div>
-
-            
-            <div class="md-card p-5 space-y-3 border-l-4 border-l-[#C6282D]">
-              <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
-                <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> 16:30 - 18:00</span>
-                <span class="text-slate-400 uppercase text-[10px]">Encerramento</span>
-              </div>
-              <h3 class="font-title font-bold text-base text-[#17344D]">
-                Posse das Novas Coordenações Estaduais & Carta de Brasília 2026
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Apresentação das diretrizes nacionais aprovadas durante o simpósio.
-              </p>
-            </div> -->
 
           </div>
         </section>
