@@ -18,7 +18,7 @@
         <div class="bg-white border-2 border-[#C81D25] rounded-2xl shadow-xl overflow-hidden">
             <!-- Header -->
             <div class="bg-[#002060] px-6 py-8 text-center">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Ficha de Cadastro de Associados</h2>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Ficha de Pedido de Cadastro de Associados</h2>
             </div>
 
             <form wire:submit.prevent="save" class="px-6 py-8 md:px-10 space-y-8">
