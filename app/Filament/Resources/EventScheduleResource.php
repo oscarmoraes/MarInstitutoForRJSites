@@ -21,9 +21,9 @@ class EventScheduleResource extends Resource
 
     protected static ?string $navigationGroup = 'Eventos';
 
-    protected static ?string $modelLabel = 'Agenda do Evento';
+    protected static ?string $modelLabel = 'Cronograma do Evento';
 
-    protected static ?string $pluralModelLabel = 'Agendas do Evento';
+    protected static ?string $pluralModelLabel = 'Cronograma do Evento';
 
     public static function form(Form $form): Form
     {

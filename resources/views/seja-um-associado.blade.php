@@ -72,7 +72,7 @@
       <div class="lg:col-span-12">
         <div>
           @livewire('associate-register')
-      </div>
+        </div>
       </div>
 
     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Simpósio Instituto MAR 2026 — Detalhes e Inscrição — Instituto MAR')
+@section('title', $event->titulo ?? 'Evento Instituto MAR 2026')
 
 @section('content')
   <!-- BREADCRUMB NAV -->

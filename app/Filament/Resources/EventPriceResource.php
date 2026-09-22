@@ -25,6 +25,9 @@ class EventPriceResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Preços do Evento';
 
+    //preciso esconder esta pagina
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form

@@ -53,6 +53,12 @@ Route::post('/contato', [ContactController::class, 'store'])->name('contato.stor
 Route::get('/prerrogativas', [PrerogativeController::class, 'index'])->name('prerrogativas');
 Route::post('/prerrogativas', [PrerogativeController::class, 'store'])->name('prerrogativas.store');
 
+// Rotas para envio de curriculo
+Route::get('/trabalhe-conosco', function () {
+    return view('trabalhe-conosco');
+})->name('trabalhe-conosco');
+
+
 // Conformidade Legal
 Route::get('/politica-de-privacidade', function () {
     return view('politica-de-privacidade');

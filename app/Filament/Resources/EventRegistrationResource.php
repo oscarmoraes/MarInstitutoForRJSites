@@ -27,7 +27,7 @@ class EventRegistrationResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('event_id')
-                    ->label('Simpósio / Curso')
+                    ->label('Evento')
                     ->relationship('event', 'titulo')
                     ->required(),
                 Forms\Components\TextInput::make('nome')
@@ -57,7 +57,7 @@ class EventRegistrationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('event.titulo')
-                    ->label('Simpósio')
+                    ->label('Evento')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('nome')
