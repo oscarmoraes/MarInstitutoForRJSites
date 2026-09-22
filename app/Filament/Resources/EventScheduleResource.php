@@ -29,10 +29,12 @@ class EventScheduleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('event_id')
+                Forms\Components\Select::make('event.titulo')
+                    ->label('Evento')
                     ->relationship('event', 'id')
                     ->required(),
-                Forms\Components\Select::make('speaker_id')
+                Forms\Components\Select::make('speaker.nome')
+                    ->label('Palestrante')
                     ->relationship('speaker', 'id'),
                 Forms\Components\TextInput::make('titulo')
                     ->required()
@@ -54,19 +56,21 @@ class EventScheduleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('event.id')
+                Tables\Columns\TextColumn::make('event.titulo')
+                    ->label('Evento')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('speaker.id')
+                Tables\Columns\TextColumn::make('speaker.nome')
+                    ->label('Palestrante')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('titulo')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('inicio')
-                    ->dateTime()
+                    ->time()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('fim')
-                    ->dateTime()
+                    ->time()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('ordem')
                     ->numeric()

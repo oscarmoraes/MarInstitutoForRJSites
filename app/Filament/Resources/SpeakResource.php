@@ -63,19 +63,7 @@ class SpeakResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('cargo')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('foto')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('linkedin')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('instagram')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('site')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('ativo')
                     ->boolean(),
