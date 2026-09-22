@@ -110,6 +110,11 @@
           </a>
         @endif
 
+        
+        <a href="{{ route('trabalhe-conosco') }}" class="{{ request()->routeIs('trabalhe-conosco') ? 'text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1' : 'hover:text-[#17344D] py-2 transition-colors' }}">
+          Envie seu currículo
+        </a>
+        
         <a href="{{ route('contato') }}" class="{{ request()->routeIs('contato') ? 'text-[#17344D] font-bold border-b-2 border-[#C6282D] pb-1' : 'hover:text-[#17344D] py-2 transition-colors' }}">{{ $siteSettings->menu_contato ?? 'Contato' }}</a>
       </nav>
 
@@ -276,6 +281,12 @@
           <p class="text-xs text-slate-300 mb-2">
             <a href="mailto:{{ $siteSettings->email_contato ?? 'contato@institutomar.org.br' }}" class="hover:text-white transition-colors">
               <i class="fa-solid fa-envelope text-[#C6282D] mr-2"></i> {{ $siteSettings->email_contato ?? 'contato@institutomar.org.br' }}
+            </a>
+          </p>
+
+          <p class="text-xs text-slate-300 mb-2">
+            <a href="{{ route('trabalhe-conosco') }}" class="hover:text-white transition-colors">
+              <i class="fa-solid fa-file-pdf text-[#C6282D] mr-2"></i> Envie seu currículo
             </a>
           </p>
           @if($siteSettings->modulo_prerrogativas ?? true)
