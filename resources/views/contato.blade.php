@@ -160,12 +160,12 @@
           </p>
         </div>
 
-        <div class="md-card p-5 space-y-2">
-          <h4 class="font-title font-bold text-base text-[#17344D]">Os eventos e simpósios são gratuitos?</h4>
+        <!-- <div class="md-card p-5 space-y-2">
+          <h4 class="font-title font-bold text-base text-[#17344D]">Os eventos são gratuitos?</h4>
           <p class="text-slate-600 leading-relaxed">
-            A maioria dos simpósios e painéis de formação continuada promovidos pelo Instituto MAR é gratuita para associados cadastrados, com emissão de certificado oficial.
+            A maioria dos eventos e painéis de formação continuada promovidos pelo Instituto MAR é gratuita para associados cadastrados, com emissão de certificado oficial.
           </p>
-        </div>
+        </div> -->
 
       </div>
     </section>

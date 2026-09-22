@@ -229,7 +229,7 @@ class SiteSettingResource extends Resource
 
                                             Toggle::make('modulo_cursos')
                                                 ->label('Módulo: Cursos e Eventos')
-                                                ->helperText('Controla a exibição de cursos, simpósios e agenda.')
+                                                ->helperText('Controla a exibição de cursos, eventos e agenda.')
                                                 ->default(true),
 
                                             Toggle::make('modulo_atos_oficiais')

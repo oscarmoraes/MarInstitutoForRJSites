@@ -210,7 +210,7 @@
           <div class="text-center space-y-2 border-b border-slate-100 pb-4">
             <span class="badge-mar text-[10px] font-bold uppercase">INSCRIÇÃO GRATUITA</span>
             <div class="font-title font-extrabold text-2xl text-[#17344D]">Vagas Limitadas</div>
-            <p class="text-xs text-slate-500">Simpósio exclusivo para advogados e bacharéis.</p>
+            <p class="text-xs text-slate-500">Evento exclusivo para inscritos.</p>
           </div>
 
           <!-- BARRA DE PROGRESSO DE VAGAS -->
@@ -260,7 +260,7 @@
 
       <div class="text-center space-y-2">
         <span class="badge-mar text-[10px] font-bold uppercase">CONFIRMAÇÃO DE VAGA</span>
-        <h3 class="font-title font-bold text-xl text-[#17344D]">Simpósio Instituto MAR 2026</h3>
+        <h3 class="font-title font-bold text-xl text-[#17344D]">Evento Instituto MAR 2026</h3>
         <p class="text-xs text-slate-500">Informe seu Nome e WhatsApp com DDD.</p>
       </div>
 
@@ -292,7 +292,7 @@
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Parabéns! Sua vaga para o Simpósio MAR 2026 está garantida com sucesso!');
+        alert('Parabéns! Sua vaga para o Evento MAR 2026 está garantida com sucesso!');
         closeLeadModal();
         form.reset();
       });

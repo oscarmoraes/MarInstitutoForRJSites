@@ -34,7 +34,7 @@
       </h2>
       <p>Coletamos informações pessoais fornecidas voluntariamente pelo usuário nos seguintes contextos:</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Inscrição em Cursos e Simpósios:</strong> Nome completo, número de WhatsApp e estado de atuação para confirmação de vaga e envio de links de transmissão.</li>
+        <li><strong>Inscrição em Cursos e Eventos:</strong> Nome completo, número de WhatsApp e estado de atuação para confirmação de vaga e envio de links de transmissão.</li>
         <li><strong>Solicitação de Associação:</strong> Nome, e-mail profissional, número do WhatsApp, inscrição na OAB e estado para análise de admissão ao quadro de associados.</li>
         <li><strong>Canal de Prerrogativas:</strong> Dados do requerente, número da OAB, relato da ocorrência e documentos anexados para prestação de assistência jurídica institucional.</li>
       </ul>

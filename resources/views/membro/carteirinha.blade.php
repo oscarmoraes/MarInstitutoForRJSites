@@ -236,7 +236,7 @@
                 <i class="fa-solid fa-circle-check text-blue-600"></i> Credencial Digital Válida em Todo o País
               </div>
               <p class="text-blue-700">
-                Esta carteirinha digital garante desconto exclusivo de 50% em simpósios do Instituto MAR e acesso prioritário ao Canal Emergencial de Prerrogativas 24h.
+                Esta carteirinha digital garante desconto exclusivo de 50% em eventos do Instituto MAR e acesso prioritário ao Canal Emergencial de Prerrogativas 24h.
               </p>
             </div>
           </div>
