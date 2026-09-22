@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventScheduleResource\Pages;
 use App\Filament\Resources\EventScheduleResource\RelationManagers;
+use App\Models\Event;
 use App\Models\EventSchedule;
+use App\Models\Speak;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -29,21 +31,22 @@ class EventScheduleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('event.titulo')
+                Forms\Components\Select::make('event_id')
                     ->label('Evento')
-                    ->relationship('event', 'id')
+                    ->options(Event::all()->pluck('titulo', 'id'))
                     ->required(),
-                Forms\Components\Select::make('speaker.nome')
+                Forms\Components\Select::make('speaker_id')
                     ->label('Palestrante')
-                    ->relationship('speaker', 'id'),
+                    ->options(Speak::all()->pluck('nome', 'id'))
+                    ->required(),
                 Forms\Components\TextInput::make('titulo')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('descricao')
                     ->columnSpanFull(),
-                Forms\Components\DateTimePicker::make('inicio')
+                Forms\Components\TimePicker::make('inicio')
                     ->required(),
-                Forms\Components\DateTimePicker::make('fim')
+                Forms\Components\TimePicker::make('fim')
                     ->required(),
                 Forms\Components\TextInput::make('ordem')
                     ->required()
