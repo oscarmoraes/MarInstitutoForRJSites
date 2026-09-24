@@ -28,18 +28,17 @@ class BoardMemberController extends Controller
         $representatives = $query->orderBy('ordem')->get();
 
         $ufs = BoardMember::where('tipo', 'REPRESENTANTE')
-            ->whereNotNull('uf')
-            ->select('uf')
-            ->distinct()
-            ->orderBy('uf')
-            ->pluck('uf');
+            ->whereNotNull('state_id')
+            ->select('state_id')
+            ->orderBy('state_id')
+            ->pluck('state_id');
 
         return view('representantes', compact('representatives', 'ufs', 'selectedUf'));
     }
 
     public function membrosHonorarios()
     {
-        $honoraryMembers = BoardMember::where('tipo', 'HONORARIO')->orderBy('ordem')->get();
+        $honoraryMembers = BoardMember::where('tipo', 'HONORARIO')->with('state')->orderBy('ordem')->get();
 
         return view('membros-honorarios', compact('honoraryMembers'));
     }

@@ -24,7 +24,7 @@
           <div class="space-y-3 text-center sm:text-left flex-grow">
             <div>
               <span class="badge-navy text-[10px]">
-                {{ $hon->oab ? $hon->oab : 'Membro Honorário' }} @if($hon->uf)• {{ $hon->uf }}@endif
+                {{ $hon->oab ? 'OAB: ' . $hon->oab : 'Membro Honorário' }} @if($hon->state)• {{ $hon->state->title }}@endif
               </span>
               <h2 class="font-title font-bold text-xl text-[#17344D] mt-1">{{ $hon->nome }}</h2>
               <p class="text-xs font-semibold text-[#C6282D]">{{ $hon->cargo }}</p>
