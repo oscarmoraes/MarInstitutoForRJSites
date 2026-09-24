@@ -49,12 +49,12 @@
 
       <div class="lg:col-span-5 relative mt-4 lg:mt-0">
         <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 group">
-          <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="Instituto MAR — Movimento da Advocacia Renovada" class="w-full h-72 sm:h-96 lg:h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
+          <img src="{{ asset('assets/images/logo-mar.png') }}" alt="Instituto MAR — Movimento da Advocacia Renovada" class="w-full  sm:h-96 lg:h-[200px] group-hover:scale-80 transition-transform duration-700" style="height: auto;">
           <div class="absolute inset-0 bg-gradient-to-t from-[#17344D] via-transparent to-transparent opacity-80"></div>
-          <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-[#17344D]/90 backdrop-blur-md border border-white/10 text-white">
+          <!-- <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-[#17344D]/90 backdrop-blur-md border border-white/10 text-white">
             <p class="text-[10px] font-semibold text-slate-300 uppercase tracking-wider mb-0.5">União & Liderança</p>
             <p class="text-xs sm:text-sm font-title font-medium leading-snug">"Conectando advogados em todo o Brasil para protagonizar o futuro do Direito."</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
