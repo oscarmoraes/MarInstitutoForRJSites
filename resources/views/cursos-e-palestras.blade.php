@@ -21,7 +21,7 @@
   <!-- PÁGINA PRINCIPAL -->
   <div class="py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-12 w-full flex-grow">
 
-    @if(isset($featuredEvent) && $featuredEvent)
+    @if($featuredEvent->id > 0)
       <!-- SIMPÓSIO EM DESTAQUE COM INSCRIÇÃO AO VIVO -->
       <div class="bg-gradient-to-r from-[#17344D] via-[#0F2334] to-[#17344D] text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-white/10 relative overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
@@ -33,7 +33,7 @@
               {{ $featuredEvent->titulo }}
             </h2>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-              {{ $featuredEvent->descricao }}
+              {!! $featuredEvent->resumo !!}
             </p>
             <div class="flex flex-wrap gap-4 text-xs text-slate-300 pt-2">
               <span><i class="fa-regular fa-calendar-check text-[#C6282D] mr-1"></i> {{ $featuredEvent->data_evento ? $featuredEvent->data_evento->translatedFormat('d \d\e F, Y') : '' }}</span>
@@ -88,7 +88,7 @@
                   {{ $event->titulo }}
                 </a>
               </h3>
-              <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">{{ $event->descricao }}</p>
+              <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">{{ $event->resumo }}</p>
             </div>
           </div>
           <div class="p-5 pt-0 border-t border-slate-100 mt-3 flex justify-between items-center text-xs">

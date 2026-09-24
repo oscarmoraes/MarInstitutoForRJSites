@@ -13,13 +13,19 @@ class EventController extends Controller
     {
         //$featuredEvent deve ser o proximo evento futuro, ou o evento mais recente se não houver eventos futuros
         $featuredEvent = Event::where('ativo', true)
-            ->where('data_evento', '>=', now())
-            ->orderBy('data_evento', 'asc')
+            ->whereDate('data_evento', '>=', now()->toDateString())
+            ->orderBy('data_evento', 'ASC')
             ->first();
 
+        if (!$featuredEvent) {
+            $featuredEvent = new Event();
+            $featuredEvent->id = 0;
+        }
+
         $events = Event::where('ativo', true)
+            ->whereDate('data_evento', '>=', now()->toDateString())
             ->when($featuredEvent, fn ($q) => $q->where('id', '!=', $featuredEvent->id))
-            ->orderBy('data_evento', 'asc')
+            ->orderBy('data_evento', 'ASC')
             ->get();
 
         return view('cursos-e-palestras', compact('featuredEvent', 'events'));
