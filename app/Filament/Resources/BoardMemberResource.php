@@ -20,7 +20,7 @@ class BoardMemberResource extends Resource
 
     protected static ?string $modelLabel = 'Diretor';
 
-    protected static ?string $pluralModelLabel = 'Diretoria Executiva';
+    protected static ?string $pluralModelLabel = 'Diretoria Estatutária e Temática';
 
     protected function getRedirectUrl(): string
     {
@@ -35,7 +35,8 @@ class BoardMemberResource extends Resource
                     ->label('Nome Completo')
                     ->required(),
                 Forms\Components\TextInput::make('cargo')
-                    ->label('Cargo (Ex: Presidente Nacional, Representante SP)')
+                    ->label('Cargo/Comissão')
+                    ->helperText('Ex: Presidente Nacional, Representante SP ou Comissão das Mulheres')
                     ->required(),
                 Forms\Components\TextInput::make('oab')
                     ->label('Nº OAB'),
@@ -59,8 +60,11 @@ class BoardMemberResource extends Resource
                     ->label('Ordem de Exibição')
                     ->numeric()
                     ->default(0),
-                Forms\Components\TextInput::make('foto_url')
-                    ->label('URL da Foto'),
+                Forms\Components\FileUpload::make('foto_url')
+                    ->label('Foto')
+                    ->image()
+                    ->disk('public')
+                    ->directory('diretoria'),
                 Forms\Components\Textarea::make('bio')
                     ->label('Mini Biografia / Histórico')
                     ->rows(3),
@@ -80,11 +84,11 @@ class BoardMemberResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('cargo')
-                    ->label('Cargo')
+                    ->label('Cargo/Comissão')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('uf')
-                    ->label('UF')
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('uf')
+                //     ->label('UF')
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo')
                     ->badge()
@@ -104,11 +108,11 @@ class BoardMemberResource extends Resource
                     ->options([
                         'DIRETORIA' => 'Diretoria Executiva',
                         'COMISSAO' => 'Comissão Temática',
-                        'REPRESENTANTE' => 'Representante UF',
+                        // 'REPRESENTANTE' => 'Representante UF',
                         'HONORARIO' => 'Membro Honorário',
                     ]),
-                Tables\Filters\SelectFilter::make('uf')
-                    ->label('Filtrar por UF'),
+                // Tables\Filters\SelectFilter::make('uf')
+                //     ->label('Filtrar por UF'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

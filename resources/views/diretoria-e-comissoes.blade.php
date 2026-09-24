@@ -20,8 +20,8 @@
     <!-- SEÇÃO PRESIDÊNCIA & DIRETORIA EXECUTIVA -->
     <section class="space-y-8">
       <div class="border-b border-slate-200 pb-3">
-        <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Presidência & Diretoria Executiva</h2>
-        <p class="text-xs text-slate-500 mt-1">Gestão Nacional 2025–2027</p>
+        <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Diretoria Estatutária</h2>
+        <p class="text-xs text-slate-500 mt-1">Gestão Nacional</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -63,7 +63,7 @@
     <!-- SEÇÃO COMISSÕES TEMÁTICAS -->
     <section class="space-y-8">
       <div class="border-b border-slate-200 pb-3">
-        <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Comissões Temáticas Nacionais</h2>
+        <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Diretoria Temáticas</h2>
         <p class="text-xs text-slate-500 mt-1">Órgãos permanentes de estudo, pareceres e atuação especializada do Instituto MAR.</p>
       </div>
 
