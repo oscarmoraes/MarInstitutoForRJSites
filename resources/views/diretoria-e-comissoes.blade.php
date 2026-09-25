@@ -29,7 +29,11 @@
           <div class="md-card overflow-hidden flex flex-col justify-between">
             <div>
               <div class="h-60 sm:h-64 overflow-hidden relative bg-slate-900">
-                <img src="{{ $dir->foto_url ?: asset('assets/images/default-avatar.svg') }}" alt="{{ $dir->nome }}" class="w-full h-full object-cover">
+                @if($dir->foto_url)
+                <img src="{{ asset('storage') . '/' . $dir->foto_url }}" alt="{{ $dir->nome }}" class="w-full h-full object-cover">
+                @else
+                <img src="{{ asset('assets/images/default-avatar.svg') }}" alt="{{ $dir->nome }}" class="w-full h-full object-cover">
+                @endif
                 @if($dir->uf)
                   <div class="absolute top-3 right-3 bg-[#17344D] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
                     {{ $dir->uf }}
