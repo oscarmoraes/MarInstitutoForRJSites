@@ -65,7 +65,7 @@
     </section>
 
     <!-- SEÇÃO COMISSÕES TEMÁTICAS -->
-    <section class="space-y-8">
+    <!-- <section class="space-y-8">
       <div class="border-b border-slate-200 pb-3">
         <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Diretoria Temáticas</h2>
         <p class="text-xs text-slate-500 mt-1">Órgãos permanentes de estudo, pareceres e atuação especializada do Instituto MAR.</p>
@@ -93,7 +93,7 @@
           </div>
         @endforelse
       </div>
-    </section>
+    </section> -->
 
   </div>
 @endsection
