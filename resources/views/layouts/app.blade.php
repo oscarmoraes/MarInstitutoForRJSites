@@ -331,7 +331,7 @@
   </footer>
 
   <!-- Scripts Global -->
-  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="{{ asset('assets/js/main.js?v1') }}"></script>
   @livewireScripts
   @stack('scripts')
 </body>
