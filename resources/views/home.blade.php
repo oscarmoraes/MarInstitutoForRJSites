@@ -201,7 +201,7 @@
         <div class="p-5 bg-white/5 border border-white/10 rounded-xl space-y-2 text-left">
           <div class="text-[10px] text-slate-400 uppercase font-semibold">Estado Selecionado</div>
           <div id="selected-uf-name" class="font-title font-bold text-lg sm:text-xl text-white">São Paulo (SP)</div>
-          <div id="selected-uf-count" class="text-xs text-red-400 font-medium"><i class="fa-solid fa-users mr-1"></i> 14 Representantes Ativos</div>
+          <div id="selected-uf-count" class="text-xs text-red-400 font-medium">Representação em Expansão</div>
         </div>
 
         <a href="{{ route('representantes') }}" class="btn-accent-mar inline-flex w-full sm:w-auto justify-center px-6 py-3.5 text-xs">
