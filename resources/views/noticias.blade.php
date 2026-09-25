@@ -37,7 +37,11 @@
       <!-- MATÉRIA DESTAQUE PRINCIPAL -->
       <div class="md-card overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 group lg:max-h-[380px]">
         <div class="lg:col-span-7 h-64 sm:h-72 lg:h-[380px] relative overflow-hidden bg-slate-900">
-          <img src="{{ $featuredPost->imagem_capa ?: asset('assets/images/placeholder-mar.svg') }}" alt="{{ $featuredPost->titulo }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+          @if($featuredPost->imagem_capa)
+            <img src="{{ asset('storage') . '/' . $featuredPost->imagem_capa }}" alt="{{ $featuredPost->titulo }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            @else
+            <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $featuredPost->titulo }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+          @endif
           <div class="absolute top-4 left-4 bg-[#C6282D] text-white text-xs font-bold uppercase px-3 py-1 rounded shadow-md">
             Destaque Nacional
           </div>
@@ -76,6 +80,11 @@
           <div class="md-card overflow-hidden flex flex-col justify-between group">
             <div>
               <div class="h-48 overflow-hidden relative bg-slate-100">
+                @if($post->imagem_capa)
+                  <img src="{{ asset('storage') . '/' . $post->imagem_capa }}" alt="{{ $post->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                  @else
+                  <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $post->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                @endif
                 <img src="{{ $post->imagem_capa ?: asset('assets/images/placeholder-mar.svg') }}" alt="{{ $post->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 <span class="absolute top-3 left-3 bg-[#17344D] text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">
                   {{ $post->categoria }}
