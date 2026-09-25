@@ -42,7 +42,7 @@
             </div>
           </div>
           <!-- verfica pela data se o evento está em aberto para inscrição -->
-           @if($featuredEvent->data_evento && $featuredEvent->data_evento->isFuture())
+           @if($featuredEvent->inscricoes_fim && $featuredEvent->inscricoes_fim->isFuture())
           <div class="lg:col-span-4 bg-white/10 p-6 rounded-xl border border-white/15 backdrop-blur-md text-center space-y-4">
             <div class="text-xs uppercase font-bold text-slate-300 tracking-wider">Garanta sua Vaga</div>
             <div class="text-3xl font-extrabold text-white font-title">{{ $featuredEvent->vagas_totais }} Vagas Totais</div>
@@ -137,6 +137,16 @@
           <input type="email" id="userEmail" name="email" placeholder="seuemail@exemplo.com" class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
         </div>
 
+        <div>
+          <label for="userType" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Atuação</label>
+          <select name="userType" id="userType" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+            <option value="">Selecione</option>
+            <option value="advogado">Advogado</option>
+            <option value="estudante">Estudante de Direito</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+
         <div id="registrationMsg" class="hidden text-xs p-3 rounded-lg font-medium"></div>
 
         <button type="submit" id="btnSubmitRegistration" class="btn-accent-mar w-full text-xs py-3.5 shadow-md">
@@ -191,7 +201,8 @@
               event_id: document.getElementById('event_id').value,
               nome: document.getElementById('userName').value,
               whatsapp: document.getElementById('userPhone').value,
-              email: document.getElementById('userEmail') ? document.getElementById('userEmail').value : ''
+              email: document.getElementById('userEmail') ? document.getElementById('userEmail').value : '',
+              tipo: document.getElementById('userType').value,
             })
           });
 

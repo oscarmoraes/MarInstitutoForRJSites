@@ -16,6 +16,7 @@ class EventRegistration extends Model
         'email',
         'oab_uf',
         'whatsapp',
+        'tipo',
         'status',
     ];
 

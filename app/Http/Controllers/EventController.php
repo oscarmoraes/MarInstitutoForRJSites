@@ -65,6 +65,7 @@ class EventController extends Controller
             'event_id' => 'required|exists:events,id',
             'nome' => 'required|string|max:255',
             'whatsapp' => 'required|string|max:30',
+            'tipo' => 'required|string|max:50',
             'email' => 'nullable|email|max:255',
             'oab_uf' => 'nullable|string|max:50',
         ]);
@@ -75,6 +76,7 @@ class EventController extends Controller
             'whatsapp' => $validated['whatsapp'],
             'email' => $validated['email'] ?? null,
             'oab_uf' => $validated['oab_uf'] ?? null,
+            'tipo' =>  $validated['tipo'] ?? 'outros',
             'status' => 'confirmado',
         ]);
 
