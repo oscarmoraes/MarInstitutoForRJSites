@@ -26,21 +26,23 @@ class MemberResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('matricula')
-                    ->label('Matrícula MAR')
-                    ->required()
-                    ->default('#2026-'.rand(1000, 9999)),
+                // Forms\Components\TextInput::make('matricula')
+                //     ->label('Matrícula MAR')
+                //     ->required()
+                //     ->default('#2026-'.rand(1000, 9999)),
                 Forms\Components\TextInput::make('nome')
-                    ->label('Nome Completo')
+                    ->label('Nome')
                     ->required(),
                 Forms\Components\TextInput::make('cpf')
-                    ->label('CPF'),
+                    ->label('CPF')
+                    ->mask('999.999.999-99'),
                 Forms\Components\TextInput::make('email')
                     ->label('E-mail')
                     ->email()
                     ->required(),
                 Forms\Components\TextInput::make('telefone')
-                    ->label('WhatsApp / Telefone'),
+                    ->label('WhatsApp / Telefone')
+                    ->mask('(99) 99999-9999'),
                 Forms\Components\TextInput::make('oab')
                     ->label('Nº OAB')
                     ->required(),
@@ -50,35 +52,30 @@ class MemberResource extends Resource
                     ->relationship('state', 'letter')
                     ->preload(),
 
-                Forms\Components\Select::make('categoria')
-                    ->label('Categoria de Associação')
-                    ->options([
-                        'Advogado Efetivo' => 'Advogado Efetivo',
-                        'Membro Honorário' => 'Membro Honorário',
-                        'Estudante / Acadêmico' => 'Estudante / Acadêmico',
-                    ])
-                    ->required(),
-                Forms\Components\TextInput::make('comissao')
-                    ->label('Comissão Integrante'),
+                Forms\Components\TextInput::make('categoria')
+                    ->label('Região')
+                    ->hint('Ex: Baixada Fluminense, Região dos Lagos'),
+                // Forms\Components\TextInput::make('comissao')
+                //     ->label('Comissão Integrante'),
                 Forms\Components\Select::make('status')
-                    ->label('Status da Filiação')
+                    ->label('Status')
                     ->options([
                         'ATIVO' => 'ATIVO',
                         'PENDENTE' => 'PENDENTE',
                         'SUSPENSO' => 'SUSPENSO',
                     ])
                     ->required(),
-                Forms\Components\DatePicker::make('validade')
-                    ->label('Validade da Anuidade')
-                    ->required(),
+                // Forms\Components\DatePicker::make('validade')
+                //     ->label('Validade da Anuidade')
+                //     ->required(),
                 Forms\Components\FileUpload::make('foto_url')
                     ->label('Foto de Perfil')
                     ->directory('members')
                     ->maxSize(5120)
                     ->acceptedFileTypes(['image/jpeg', 'image/png'])
                     ->image(),
-                Forms\Components\TextInput::make('hash_validacao')
-                    ->label('Código Hash de Validação'),
+                // Forms\Components\TextInput::make('hash_validacao')
+                //     ->label('Código Hash de Validação'),
             ]);
     }
 
@@ -86,21 +83,20 @@ class MemberResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('matricula')
-                    ->label('Matrícula')
-                    ->searchable()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('nome')
                     ->label('Nome')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('oab')
-                    ->label('OAB/UF')
-                    ->formatStateUsing(fn ($record) => "{$record->oab}/{$record->uf}")
+                    ->label('OAB')
+                    ->formatStateUsing(fn ($record) => "{$record->oab}")
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('state.letter')
+                    ->label('UF OAB')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('categoria')
-                    ->label('Categoria')
-                    ->badge(),
+                    ->label('Região')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->label('Status')
                     ->badge()
@@ -110,10 +106,6 @@ class MemberResource extends Resource
                         'SUSPENSO' => 'danger',
                         default => 'gray',
                     }),
-                Tables\Columns\TextColumn::make('validade')
-                    ->label('Validade')
-                    ->date('d/m/Y')
-                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')

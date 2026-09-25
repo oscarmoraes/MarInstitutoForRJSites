@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Observers\MemberObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy(MemberObserver::class)]
 class Member extends Model
 {
     use HasFactory;
