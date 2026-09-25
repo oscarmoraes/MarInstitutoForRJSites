@@ -54,9 +54,16 @@ class PostResource extends Resource
                     ->searchable()
                     ->required(),
 
-                Forms\Components\TextInput::make('imagem_capa')
-                    ->label('URL da Imagem de Capa')
-                    ->placeholder('https://images.unsplash.com/... ou URL da imagem'),
+                Forms\Components\FileUpload::make('imagem_capa')
+                    ->label('Imagem de Capa')
+                    ->directory('posts')
+                    ->maxSize(5120)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                    ->image(),
+
+                // Forms\Components\TextInput::make('imagem_capa')
+                //     ->label('URL da Imagem de Capa')
+                //     ->placeholder('https://images.unsplash.com/... ou URL da imagem'),
 
                 Forms\Components\TextInput::make('autor')
                     ->label('Autor')
