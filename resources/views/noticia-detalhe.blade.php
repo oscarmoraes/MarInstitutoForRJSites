@@ -80,7 +80,7 @@
         @if($post->imagem_capa)
           <figure class="space-y-2">
             <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-900">
-              <img src="{{ $post->imagem_capa }}" alt="{{ $post->titulo }}" class="w-full h-72 sm:h-[420px] object-cover">
+              <img src="{{ asset('storage') . '/' . $post->imagem_capa }}" class="w-full h-72 sm:h-[420px] object-cover">
             </div>
             <figcaption class="text-[11px] text-slate-500 text-center italic">
               {{ $post->titulo }}
