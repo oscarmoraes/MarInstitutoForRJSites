@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BoardMember;
+use App\Models\Member;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class BoardMemberController extends Controller
@@ -19,19 +21,26 @@ class BoardMemberController extends Controller
     {
         $selectedUf = $request->input('uf', 'TODOS');
 
-        $query = BoardMember::where('tipo', 'REPRESENTANTE');
+        $query = Member::where('status', 'ATIVO')->with('state');
 
-        if (! empty($selectedUf) && $selectedUf !== 'TODOS') {
-            $query->where('uf', $selectedUf);
+        // Se foi selecionado um UF específico, filtra pelo relacionamento
+        if (!empty($selectedUf) && $selectedUf !== 'TODOS') {
+            $query->whereHas('state', function ($q) use ($selectedUf) {
+                $q->where('letter', $selectedUf);
+            });
         }
 
-        $representatives = $query->orderBy('ordem')->get();
+        $representatives = $query->orderBy('nome')->get();
 
-        $ufs = BoardMember::where('tipo', 'REPRESENTANTE')
-            ->whereNotNull('state_id')
-            ->select('state_id')
-            ->orderBy('state_id')
-            ->pluck('state_id');
+        // Buscar lista de UFs disponíveis entre os membros ativos
+        $ufs = State::whereIn('id', function ($sub) {
+                $sub->select('state_id')
+                    ->from('members')
+                    ->where('status', 'ATIVO')
+                    ->whereNotNull('state_id');
+            })
+            ->orderBy('letter')
+            ->pluck('letter');
 
         return view('representantes', compact('representatives', 'ufs', 'selectedUf'));
     }

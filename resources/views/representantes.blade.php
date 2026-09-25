@@ -44,11 +44,12 @@
           <div class="flex items-start gap-3.5">
             <img src="{{ $rep->foto_url ?: asset('assets/images/default-avatar.svg') }}" alt="{{ $rep->nome }}" class="w-16 sm:w-20 h-16 sm:h-20 rounded-xl object-cover shrink-0 border-2 border-[#17344D]">
             <div>
-              <span class="badge-navy text-[10px]">{{ $rep->uf }}</span>
+              <span class="badge-navy text-[10px]">{{ $rep->state->letter }} {{ $rep->categoria !="" ? " - " . $rep->categoria : "" }}</span>
+              
               <h3 class="font-title font-bold text-base sm:text-lg text-[#17344D] mt-1">{{ $rep->nome }}</h3>
               <p class="text-xs font-semibold text-[#C6282D]">{{ $rep->cargo }}</p>
               @if($rep->oab)
-                <p class="text-[10px] text-slate-400">OAB/{{ $rep->uf }} {{ $rep->oab }}</p>
+                <p class="text-[10px] text-slate-400">OAB/{{ $rep->state->letter }} {{ $rep->oab }}</p>
               @endif
             </div>
           </div>
@@ -56,8 +57,8 @@
             {{ $rep->bio }}
           </p>
           <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
-            <span class="text-slate-500"><i class="fa-solid fa-location-dot text-[#C6282D] mr-1"></i> {{ $rep->uf }}</span>
-            <a href="mailto:{{ strtolower($rep->uf) }}@institutomar.org.br" class="font-bold text-[#17344D] hover:underline"><i class="fa-solid fa-envelope mr-1"></i> Contato</a>
+            <span class="text-slate-500"><i class="fa-solid fa-location-dot text-[#C6282D] mr-1"></i> {{ $rep->categoria !="" ? $rep->categoria . " - ": "" }} {{ $rep->state->letter }}</span>
+            <a href="mailto:{{ strtolower($rep->email) }}" class="font-bold text-[#17344D] hover:underline"><i class="fa-solid fa-envelope mr-1"></i> Contato</a>
           </div>
         </div>
       @empty
