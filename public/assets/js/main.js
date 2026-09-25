@@ -87,20 +87,64 @@ function initBrazilMapInteractions() {
   const ufElements = document.querySelectorAll('.map-uf');
   const selectedUfLabel = document.getElementById('selected-uf-name');
   const repCountLabel = document.getElementById('selected-uf-count');
-  
-  const ufData = {
-    'SP': { name: 'São Paulo', reps: 14 },
-    'RJ': { name: 'Rio de Janeiro', reps: 9 },
-    'MG': { name: 'Minas Gerais', reps: 11 },
-    'BA': { name: 'Bahia', reps: 7 },
-    'RS': { name: 'Rio Grande do Sul', reps: 8 },
-    'PR': { name: 'Paraná', reps: 6 },
-    'PE': { name: 'Pernambuco', reps: 5 },
-    'CE': { name: 'Ceará', reps: 4 },
-    'DF': { name: 'Distrito Federal', reps: 10 },
-    'SC': { name: 'Santa Catarina', reps: 5 },
-    'GO': { name: 'Goiás', reps: 4 }
+
+  const defaultUfData = {
+    'SP': { name: 'São Paulo', reps: 0 },
+    'RJ': { name: 'Rio de Janeiro', reps: 0 },
+    'MG': { name: 'Minas Gerais', reps: 0 },
+    'BA': { name: 'Bahia', reps: 0 },
+    'RS': { name: 'Rio Grande do Sul', reps: 0 },
+    'PR': { name: 'Paraná', reps: 0 },
+    'PE': { name: 'Pernambuco', reps: 0 },
+    'CE': { name: 'Ceará', reps: 0 },
+    'DF': { name: 'Distrito Federal', reps: 0 },
+    'SC': { name: 'Santa Catarina', reps: 0 },
+    'GO': { name: 'Goiás', reps: 0 }
   };
+
+  let ufData = { ...defaultUfData };
+
+  function updateSelectedStateLabel(uf) {
+    const stateData = ufData[uf];
+
+    if (selectedUfLabel) {
+      selectedUfLabel.innerText = stateData
+        ? `${stateData.name} (${uf})`
+        : `Estado (${uf})`;
+    }
+
+    if (repCountLabel) {
+      if (stateData) {
+          repCountLabel.innerText = stateData.reps > 0
+            ? `${stateData.reps} Representantes Ativos`
+            : 'Representação em Expansão';
+      } else {
+        repCountLabel.innerText = 'Representação em Expansão';
+      }
+
+    }
+  }
+
+  fetch('/api/v1/representantes/home')
+    .then(async (response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const retornoData = await response.json();
+      const apiUfData = retornoData && retornoData.original ? retornoData.original : {};
+
+      ufData = {
+        ...defaultUfData,
+        ...apiUfData
+      };
+
+      console.log(ufData, 'matriz atualizada com a API');
+
+      const activeUf = document.querySelector('.map-uf.active')?.getAttribute('data-uf');
+      if (activeUf) {
+        updateSelectedStateLabel(activeUf);
+      }
+    })
+    .catch(error => console.error('Não foi possível carregar os representantes:', error));
 
   ufElements.forEach(el => {
     el.addEventListener('click', () => {
@@ -108,13 +152,7 @@ function initBrazilMapInteractions() {
       ufElements.forEach(item => item.classList.remove('active', 'bg-[#C6282D]', 'text-white'));
       el.classList.add('active', 'bg-[#C6282D]', 'text-white');
 
-      if (ufData[uf]) {
-        if (selectedUfLabel) selectedUfLabel.innerText = `${ufData[uf].name} (${uf})`;
-        if (repCountLabel) repCountLabel.innerText = `${ufData[uf].reps} Representantes Ativos`;
-      } else {
-        if (selectedUfLabel) selectedUfLabel.innerText = `Estado (${uf})`;
-        if (repCountLabel) repCountLabel.innerText = `Representação em Expansão`;
-      }
+      updateSelectedStateLabel(uf);
     });
   });
 }

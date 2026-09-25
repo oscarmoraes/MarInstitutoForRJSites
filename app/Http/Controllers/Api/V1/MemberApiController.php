@@ -26,4 +26,15 @@ class MemberApiController extends Controller
             'data' => new MemberCardResource($member),
         ]);
     }
+
+    public function home(Request $request)
+    {
+        try {
+            $repository = new Member();
+            
+            return response()->json($repository->getMemberGroupStateToHome());
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }

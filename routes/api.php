@@ -52,4 +52,6 @@ Route::prefix('v1')->group(function () {
     // Validador de Certificados (Scanner QR Code)
     Route::get('/certificates/verify/{code}', [CertificateApiController::class, 'verify']);
 
+    Route::get('/representantes/home', [MemberApiController::class, 'home']);
+
 });
