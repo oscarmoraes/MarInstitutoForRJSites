@@ -50,8 +50,8 @@ class MemberResource extends Resource
                 Forms\Components\Select::make('state_id')
                     ->label('UF Representada')
                     ->relationship('state', 'letter')
-                    ->preload(),
-
+                    ->preload()
+                    ->required(),
                 Forms\Components\TextInput::make('categoria')
                     ->label('Região')
                     ->hint('Ex: Baixada Fluminense, Região dos Lagos'),
