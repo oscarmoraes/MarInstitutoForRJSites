@@ -295,7 +295,12 @@
           @php $mainPost = $posts->first(); @endphp
           <div class="lg:col-span-7 md-card overflow-hidden flex flex-col justify-between group">
             <div class="relative h-56 sm:h-72 overflow-hidden bg-slate-900">
-              <img src="{{ $mainPost->imagem_capa ?: asset('assets/images/placeholder-mar.svg') }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              @if($mainPost->imagem_capa)
+                <img src="{{ asset('storage') . '/' . $mainPost->imagem_capa }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                @else
+                <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              @endif
+              <!-- <img src="{{ $mainPost->imagem_capa ?: asset('assets/images/placeholder-mar.svg') }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"> -->
               <div class="absolute top-3 left-3 bg-[#C6282D] text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">
                 {{ $mainPost->categoria }}
               </div>
