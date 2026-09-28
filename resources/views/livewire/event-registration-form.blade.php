@@ -33,18 +33,20 @@
         @error('email') <span class="text-[10px] text-red-500 font-semibold">{{ $message }}</span> @enderror
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label for="oab_uf" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Nº OAB / UF ou CPF *</label>
-          <input type="text" id="oab_uf" wire:model.blur="oab_uf" placeholder="Ex: 123456/SP ou CPF" class="w-full p-3 border rounded-lg text-xs outline-none focus:border-[#17344D] @error('oab_uf') border-red-500 @else border-slate-300 @enderror">
-          @error('oab_uf') <span class="text-[10px] text-red-500 font-semibold">{{ $message }}</span> @enderror
-        </div>
-
-        <div>
-          <label for="whatsapp" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Celular / WhatsApp *</label>
-          <input type="text" id="whatsapp" wire:model.blur="whatsapp" placeholder="(11) 99999-9999" class="w-full p-3 border rounded-lg text-xs outline-none focus:border-[#17344D] @error('whatsapp') border-red-500 @else border-slate-300 @enderror">
-          @error('whatsapp') <span class="text-[10px] text-red-500 font-semibold">{{ $message }}</span> @enderror
-        </div>
+      <div>
+        <label for="whatsapp" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Celular / WhatsApp *</label>
+        <input type="text" id="whatsapp" wire:model.blur="whatsapp" mask="(99) 99999-9999" placeholder="(11) 99999-9999" class="w-full p-3 border rounded-lg text-xs outline-none focus:border-[#17344D] @error('whatsapp') border-red-500 @else border-slate-300 @enderror">
+        @error('whatsapp') <span class="text-[10px] text-red-500 font-semibold">{{ $message }}</span> @enderror
+      </div>
+      
+      <div>
+        <label for="userType" class="block text-xs font-bold text-[#17344D] uppercase mb-1">Atuação</label>
+        <select wire:model.blur="userType" id="userType" required class="w-full p-3 border border-slate-300 rounded-lg text-xs outline-none focus:border-[#17344D]">
+          <option value="">Selecione</option>
+          <option value="advogado">Advogado</option>
+          <option value="estudante">Estudante de Direito</option>
+          <option value="outros">Outros</option>
+        </select>
       </div>
 
       <button type="submit" wire:loading.attr="disabled" class="w-full bg-[#C6282D] hover:bg-red-700 disabled:opacity-50 text-white font-bold py-3.5 px-6 rounded-xl text-xs uppercase shadow-lg transition-all flex items-center justify-center gap-2">

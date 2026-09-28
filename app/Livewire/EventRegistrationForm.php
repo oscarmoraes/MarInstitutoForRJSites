@@ -9,25 +9,19 @@ use Livewire\Component;
 class EventRegistrationForm extends Component
 {
     public $eventId;
-
     public $event;
-
     public $nome = '';
-
     public $email = '';
-
     public $oab_uf = '';
-
     public $whatsapp = '';
-
+    public $userType = '';
     public $submitted = false;
-
     public $codigoInscricao = '';
 
     protected $rules = [
         'nome' => 'required|min:3',
         'email' => 'required|email',
-        'oab_uf' => 'required',
+        // 'oab_uf' => 'required',
         'whatsapp' => 'required',
     ];
 
@@ -52,9 +46,10 @@ class EventRegistrationForm extends Component
             'event_id' => $this->eventId,
             'nome' => $this->nome,
             'email' => $this->email,
-            'oab_uf' => $this->oab_uf,
+            'oab_uf' => "-",
             'whatsapp' => $this->whatsapp,
-            'status' => 'CONFIRMADA',
+            'tipo' => $this->userType,
+            'status' => 'confirmado',
         ]);
 
         $this->codigoInscricao = 'INS-'.str_pad($registration->id, 6, '0', STR_PAD_LEFT);
