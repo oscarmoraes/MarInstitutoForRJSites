@@ -17,6 +17,7 @@
         <div class="bg-white border-2 border-[#C81D25] rounded-2xl shadow-xl overflow-hidden">
             <div class="bg-[#002060] px-6 py-8 text-center">
                 <h2 class="text-3xl font-bold text-white tracking-tight">Cadastro de Currículo</h2>
+                <p class="text-1xl text-white ">Somente para associados</p>
             </div>
 
             <form wire:submit.prevent="save" class="px-6 py-8 md:px-10 space-y-8" enctype="multipart/form-data">
