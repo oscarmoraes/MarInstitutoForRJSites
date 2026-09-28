@@ -327,7 +327,12 @@
             @foreach($posts->slice(1, 3) as $sidePost)
               <a href="{{ route('noticia.show', $sidePost->slug) }}" class="md-card p-4 flex gap-3.5 items-center hover:border-[#17344D] group block transition-all">
                 <div class="w-20 h-20 rounded-lg bg-slate-200 overflow-hidden shrink-0">
-                  <img src="{{ $sidePost->imagem_capa ?: asset('assets/images/placeholder-mar.svg') }}" alt="{{ $sidePost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                  @if($sidePost->imagem_capa)
+                    <img src="{{ asset('storage') . '/' . $sidePost->imagem_capa }}" alt="{{ $sidePost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    @else
+                    <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $sidePost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform ">
+                  @endif
+                  <!-- <img src="{{ $sidePost->imagem_capa ?: asset('assets/images/placeholder-mar.svg') }}" alt="{{ $sidePost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform"> -->
                 </div>
                 <div class="space-y-1">
                   <span class="text-[10px] font-bold text-[#C6282D] uppercase">{{ $sidePost->categoria }}</span>
