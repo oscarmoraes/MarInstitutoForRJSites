@@ -81,7 +81,7 @@
             <div>
               <div class="h-48 overflow-hidden relative bg-slate-100">
                 @if($post->imagem_capa)
-                  <img src="{{ asset('storage') . '/' . $post->imagem_capa }}" alt="{{ $post->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" {{ $featuredPost->getImgStyleFormatted('noticias') }}>
+                  <img src="{{ asset('storage') . '/' . $post->imagem_capa }}" alt="{{ $post->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" {{ $post->getImgStyleFormatted('noticias') }}>
                   @else
                   <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $post->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 @endif
