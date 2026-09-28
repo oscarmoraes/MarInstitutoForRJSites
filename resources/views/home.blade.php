@@ -296,7 +296,7 @@
           <div class="lg:col-span-7 md-card overflow-hidden flex flex-col justify-between group">
             <div class="relative h-56 sm:h-72 overflow-hidden bg-slate-900">
               @if($mainPost->imagem_capa)
-                <img src="{{ asset('storage') . '/' . $mainPost->imagem_capa }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="{{ asset('storage') . '/' . $mainPost->imagem_capa }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" {{ $mainPost->getImgStyleFormatted('home') }}>
                 @else
                 <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $mainPost->titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               @endif

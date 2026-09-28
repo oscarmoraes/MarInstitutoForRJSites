@@ -91,6 +91,10 @@ class PostResource extends Resource
                     ->label('Conteúdo Completo')
                     ->columnSpanFull()
                     ->required(),
+
+                Forms\Components\KeyValue::make('img_styles')
+                    ->label('Ajuste Imagem')
+                    ->columnSpanFull(),
             ]);
     }
 
