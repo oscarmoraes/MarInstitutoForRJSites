@@ -38,7 +38,7 @@
       <div class="md-card overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 group lg:max-h-[380px]">
         <div class="lg:col-span-7 h-64 sm:h-72 lg:h-[380px] relative overflow-hidden bg-slate-900">
           @if($featuredPost->imagem_capa)
-            <img src="{{ asset('storage') . '/' . $featuredPost->imagem_capa }}" alt="{{ $featuredPost->titulo }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" {{ $mainPost->getImgStyleFormatted('noticias') }}>
+            <img src="{{ asset('storage') . '/' . $featuredPost->imagem_capa }}" alt="{{ $featuredPost->titulo }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" {{ $featuredPost->getImgStyleFormatted('noticias') }}>
             @else
             <img src="{{ asset('assets/images/placeholder-mar.svg') }}" alt="{{ $featuredPost->titulo }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
           @endif
