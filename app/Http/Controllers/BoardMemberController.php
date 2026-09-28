@@ -11,10 +11,20 @@ class BoardMemberController extends Controller
 {
     public function diretoria()
     {
+        $tela = 'diretoria';
         $directors = BoardMember::where('tipo', 'DIRETORIA')->orderBy('ordem')->get();
+        $commissions = [];
+
+        return view('diretoria-e-comissoes', compact('directors', 'commissions', 'tela'));
+    }
+
+    public function comissoes()
+    {
+        $tela = 'comissoes';
+        $directors = [];
         $commissions = BoardMember::where('tipo', 'COMISSAO')->orderBy('ordem')->get();
 
-        return view('diretoria-e-comissoes', compact('directors', 'commissions'));
+        return view('diretoria-e-comissoes', compact('directors', 'commissions', 'tela'));
     }
 
     public function representantes(Request $request)

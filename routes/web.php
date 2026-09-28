@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 // Rotas Públicas do Portal
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/diretoria-e-comissoes', [BoardMemberController::class, 'diretoria'])->name('diretoria');
+Route::get('/diretoria', [BoardMemberController::class, 'diretoria'])->name('diretoria');
+Route::get('/comissoes', [BoardMemberController::class, 'comissoes'])->name('comissoes');
 Route::get('/representantes', [BoardMemberController::class, 'representantes'])->name('representantes');
 Route::get('/membros-honorarios', [BoardMemberController::class, 'membrosHonorarios'])->name('membros-honorarios');
 

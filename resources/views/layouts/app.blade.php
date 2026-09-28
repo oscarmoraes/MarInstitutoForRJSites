@@ -54,7 +54,10 @@
             <div class="nav-dropdown-menu">
               <div class="w-60 bg-white border border-slate-200 rounded-xl shadow-xl py-2">
                 @if($siteSettings->modulo_diretoria ?? true)
-                  <a href="{{ route('diretoria') }}" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-users text-[#17344D] w-4 mr-2"></i> {{ $siteSettings->menu_diretoria ?? 'Diretoria e Comissões' }}</a>
+                  <a href="{{ route('diretoria') }}" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-users text-[#17344D] w-4 mr-2"></i> {{ $siteSettings->menu_diretoria ?? 'Diretoria Estatutária' }}</a>
+                @endif
+                @if($siteSettings->modulo_diretoria ?? true)
+                  <a href="{{ route('comissoes') }}" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-users text-[#17344D] w-4 mr-2"></i> Diretorias Temáticas </a>
                 @endif
                 @if($siteSettings->modulo_representantes ?? true)
                   <a href="{{ route('representantes') }}" class="block px-4 py-2.5 hover:bg-slate-50 text-slate-700 hover:text-[#17344D] text-xs font-medium"><i class="fa-solid fa-map-location-dot text-[#17344D] w-4 mr-2"></i> {{ $siteSettings->menu_representantes ?? 'Representantes por Estado' }}</a>

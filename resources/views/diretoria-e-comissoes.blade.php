@@ -1,6 +1,9 @@
 @extends('layouts.app')
-
-@section('title', 'Diretoria e Comissões — Instituto MAR')
+@if ($tela == 'diretoria')
+  @section('title', 'Diretoria Estatutária — Instituto MAR')
+@else
+  @section('title', 'Diretorias Temáticas — Instituto MAR')
+@endif
 
 @section('content')
   <!-- BANNER DA PÁGINA -->
@@ -17,6 +20,8 @@
   <!-- PÁGINA PRINCIPAL -->
   <div class="py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-12 sm:space-y-16 w-full flex-grow">
 
+
+    @if ($tela == 'diretoria')
     <!-- SEÇÃO PRESIDÊNCIA & DIRETORIA EXECUTIVA -->
     <section class="space-y-8">
       <div class="border-b border-slate-200 pb-3">
@@ -63,11 +68,13 @@
         @endforelse
       </div>
     </section>
+    
+    @else
 
     <!-- SEÇÃO COMISSÕES TEMÁTICAS -->
-    <!-- <section class="space-y-8">
+    <section class="space-y-8">
       <div class="border-b border-slate-200 pb-3">
-        <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Diretoria Temáticas</h2>
+        <h2 class="font-title text-xl sm:text-2xl font-extrabold text-[#17344D]">Diretorias Temáticas</h2>
         <p class="text-xs text-slate-500 mt-1">Órgãos permanentes de estudo, pareceres e atuação especializada do Instituto MAR.</p>
       </div>
 
@@ -93,7 +100,8 @@
           </div>
         @endforelse
       </div>
-    </section> -->
+    </section>
+    @endif
 
   </div>
 @endsection
