@@ -93,8 +93,8 @@
       <!-- INFORMAÇÕES DE CONTATO E SEDES -->
       <div class="lg:col-span-5 space-y-6">
         
-        <!-- CARDS DE CONTATO POR SETOR -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        
+        <!-- <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-title font-bold text-base text-[#17344D] border-b border-slate-100 pb-3 flex items-center gap-2">
             <i class="fa-solid fa-building-columns text-[#C6282D]"></i> Sedes Nacionais
           </h3>
@@ -116,7 +116,7 @@
               <p class="text-[11px] text-slate-400">CEP: 01310-200 • <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings->telefone_plantao ?? '1131000000') }}" class="hover:text-[#17344D] transition-colors">Tel: {{ $siteSettings->telefone_plantao ?? '(11) 3100-0000' }}</a></p>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- CONTATOS DIRETOS -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3 text-xs">
@@ -126,9 +126,47 @@
 
           <div class="space-y-2 text-slate-600">
             <p><strong>Geral:</strong> <a href="mailto:{{ $siteSettings->email_contato ?? 'contato@institutomar.org.br' }}" class="text-[#17344D] hover:underline">{{ $siteSettings->email_contato ?? 'contato@institutomar.org.br' }}</a></p>
-            <p><strong>Prerrogativas 24h:</strong> <a href="mailto:prerrogativas@institutomar.org.br" class="text-[#C6282D] font-bold hover:underline">prerrogativas@institutomar.org.br</a></p>
+            <!-- <p><strong>Prerrogativas 24h:</strong> <a href="mailto:prerrogativas@institutomar.org.br" class="text-[#C6282D] font-bold hover:underline">prerrogativas@institutomar.org.br</a></p> -->
             <p><strong>Imprensa:</strong> <a href="mailto:imprensa@institutomar.org.br" class="text-[#17344D] hover:underline">imprensa@institutomar.org.br</a></p>
             <p><strong>Ouvidoria:</strong> <a href="mailto:ouvidoria@institutomar.org.br" class="text-[#17344D] hover:underline">ouvidoria@institutomar.org.br</a></p>
+          </div>
+        </div>
+
+        @php
+          $whatsappPlantaoNumero = preg_replace('/\D/', '', $siteSettings->whatsapp_plantao ?? '5561999990000');
+          $whatsappQrLink = 'https://chat.whatsapp.com/COfA5OihAMU0YL7iS8OFpX';
+          $instagramQrLink = $siteSettings->instagram_url ?? 'https://www.instagram.com/institutomardireito';
+        @endphp
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h3 class="font-title font-bold text-base text-[#17344D] border-b border-slate-100 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-qrcode text-[#C6282D]"></i> Acesso rápido por QR Code
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href="{{ $whatsappQrLink }}" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-slate-200 bg-slate-50 p-4 transition hover:-translate-y-0.5 hover:shadow-md">
+              <div class="flex items-center justify-center rounded-xl bg-white p-3 shadow-sm border border-slate-100">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data={{ urlencode($whatsappQrLink) }}" alt="QR Code do WhatsApp do Instituto MAR" class="w-24 h-24 object-contain rounded-lg">
+              </div>
+              <div class="mt-3 text-center">
+                <div class="flex items-center justify-center gap-2 text-[#17344D] font-bold text-xs uppercase">
+                  <i class="fa-brands fa-whatsapp text-green-600"></i> WhatsApp
+                </div>
+                <p class="text-[10px] text-slate-500 mt-1">Entre em contato</p>
+              </div>
+            </a>
+
+            <a href="{{ $instagramQrLink }}" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl border border-slate-200 bg-slate-50 p-4 transition hover:-translate-y-0.5 hover:shadow-md">
+              <div class="flex items-center justify-center rounded-xl bg-white p-3 shadow-sm border border-slate-100">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data={{ urlencode($instagramQrLink) }}" alt="QR Code do Instagram do Instituto MAR" class="w-24 h-24 object-contain rounded-lg">
+              </div>
+              <div class="mt-3 text-center">
+                <div class="flex items-center justify-center gap-2 text-[#17344D] font-bold text-xs uppercase">
+                  <i class="fa-brands fa-instagram text-[#C6282D]"></i> Instagram
+                </div>
+                <p class="text-[10px] text-slate-500 mt-1">Acompanhe o perfil</p>
+              </div>
+            </a>
           </div>
         </div>
 
