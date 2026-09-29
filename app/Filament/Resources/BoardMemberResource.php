@@ -68,6 +68,9 @@ class BoardMemberResource extends Resource
                 Forms\Components\Textarea::make('bio')
                     ->label('Mini Biografia / Histórico')
                     ->rows(3),
+                Forms\Components\KeyValue::make('img_styles')
+                    ->label('Ajuste Imagem')
+                    ->columnSpanFull(),
             ]);
     }
 

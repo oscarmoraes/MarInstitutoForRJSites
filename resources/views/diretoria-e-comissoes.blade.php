@@ -35,7 +35,7 @@
             <div>
               <div class="h-60 sm:h-64 overflow-hidden relative bg-slate-900">
                 @if($dir->foto_url)
-                <img src="{{ asset('storage') . '/' . $dir->foto_url }}" alt="{{ $dir->nome }}" class="w-full h-full object-cover">
+                <img src="{{ asset('storage') . '/' . $dir->foto_url }}" alt="{{ $dir->nome }}" class="w-full h-full object-cover" {{ $dir->getImgStyleFormatted('diretoria') }}>
                 @else
                 <img src="{{ asset('assets/images/default-avatar.svg') }}" alt="{{ $dir->nome }}" class="w-full h-full object-cover">
                 @endif
