@@ -30,7 +30,14 @@ class PostController extends Controller
 
     public function show($slug = 'manifesto-honorarios')
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
+        $post = Post::with(['galleries' => function ($query) {
+            $query->where('status', 'published')
+                ->where(function ($query) {
+                    $query->whereNull('published_at')
+                        ->orWhere('published_at', '<=', now());
+                })
+                ->with(['photos' => fn ($query) => $query->orderBy('sort_order')]);
+        }])->where('slug', $slug)->firstOrFail();
 
         $relatedPosts = Post::where('id', '!=', $post->id)
             ->where('categoria', $post->categoria)

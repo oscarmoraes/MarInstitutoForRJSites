@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Post extends Model
 {
@@ -28,6 +29,11 @@ class Post extends Model
         'destaque' => 'boolean',
         'img_styles' => 'array', 
     ];
+
+    public function galleries(): MorphMany
+    {
+        return $this->morphMany(Gallery::class, 'galleryable');
+    }
 
     public function getImgStyle(string $key, $default = null)
     {

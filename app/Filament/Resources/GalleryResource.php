@@ -5,8 +5,11 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\GalleryResource\Pages;
 use App\Models\Event;
 use App\Models\Gallery;
+use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,14 +30,26 @@ class GalleryResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('galleryable_type')
+                    ->label('Tipo de vínculo')
+                    ->options([
+                        Event::class => 'Evento',
+                        Post::class => 'Notícia',
+                    ])
+                    ->default(Event::class)
+                    ->live()
+                    ->required()
+                    ->afterStateUpdated(fn (Set $set) => $set('galleryable_id', null)),
                 Forms\Components\Select::make('galleryable_id')
-                    ->label('Evento')
-                    ->options(fn () => Event::query()->orderBy('titulo')->pluck('titulo', 'id'))
+                    ->label(fn (Get $get): string => $get('galleryable_type') === Post::class ? 'Notícia' : 'Evento')
+                    ->options(fn (Get $get): array => match ($get('galleryable_type')) {
+                        Event::class => Event::query()->orderBy('titulo')->pluck('titulo', 'id')->all(),
+                        Post::class => Post::query()->orderBy('titulo')->pluck('titulo', 'id')->all(),
+                        default => [],
+                    })
                     ->searchable()
                     ->preload()
                     ->required(),
-                Forms\Components\Hidden::make('galleryable_type')
-                    ->default(Event::class),
                 Forms\Components\TextInput::make('title')
                     ->label('Título da Galeria')
                     ->required()
@@ -97,7 +112,7 @@ class GalleryResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('galleryable.titulo')
-                    ->label('Evento')
+                    ->label('Vinculado a')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('photos_count')

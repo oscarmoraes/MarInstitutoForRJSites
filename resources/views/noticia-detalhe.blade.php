@@ -93,6 +93,50 @@
           {!! $post->conteudo !!}
         </div>
 
+        @if ($post->galleries->isNotEmpty())
+          <section class="space-y-6">
+            <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
+              <i class="fa-solid fa-images text-[#C6282D]"></i> Galeria da Notícia
+            </h2>
+
+            @foreach ($post->galleries as $gallery)
+              @if ($gallery->photos->isNotEmpty())
+                <div class="space-y-4">
+                  <div>
+                    <h3 class="font-title font-bold text-lg text-[#17344D]">{{ $gallery->title }}</h3>
+                    @if ($gallery->description)
+                      <p class="text-sm text-slate-600 mt-1">{{ $gallery->description }}</p>
+                    @endif
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    @foreach ($gallery->photos as $photo)
+                      @php
+                        $photoUrl = filter_var($photo->path, FILTER_VALIDATE_URL)
+                            ? $photo->path
+                            : asset('storage/' . ltrim($photo->path, '/'));
+                      @endphp
+                      <figure class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <img src="{{ $photoUrl }}" alt="{{ $photo->title ?: $gallery->title }}" loading="lazy" class="w-full aspect-[4/3] object-cover transition duration-300 group-hover:scale-105">
+                        @if ($photo->title || $photo->description)
+                          <figcaption class="p-3">
+                            @if ($photo->title)
+                              <div class="font-semibold text-sm text-[#17344D]">{{ $photo->title }}</div>
+                            @endif
+                            @if ($photo->description)
+                              <p class="text-xs text-slate-500 mt-1">{{ $photo->description }}</p>
+                            @endif
+                          </figcaption>
+                        @endif
+                      </figure>
+                    @endforeach
+                  </div>
+                </div>
+              @endif
+            @endforeach
+          </section>
+        @endif
+
         <!-- TAGS E RODAPÉ DO ARTIGO -->
         <div class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
           <div class="flex flex-wrap items-center gap-2 text-xs">
