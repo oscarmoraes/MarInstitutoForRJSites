@@ -90,4 +90,10 @@ class EventController extends Controller
 
         return redirect()->back()->with('success', 'Inscrição efetuada com sucesso!');
     }
+
+    public function showRegisterForm($slug)
+    {
+        $event = Event::where('slug', $slug)->firstOrFail();
+        return view('curso-inscricao', compact('event'));
+    }
 }

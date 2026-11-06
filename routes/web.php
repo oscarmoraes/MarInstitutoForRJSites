@@ -39,6 +39,7 @@ Route::get('/notas-e-atos-oficiais', [OfficialDocumentController::class, 'index'
 // Cursos e Eventos
 Route::get('/cursos-e-palestras', [EventController::class, 'index'])->name('cursos');
 Route::get('/cursos-e-palestras/{slug}', [EventController::class, 'show'])->name('curso.show');
+Route::get('/cursos-e-palestras/{slug}/inscrever', [EventController::class, 'showRegisterForm'])->name('curso.inscrever');
 Route::post('/cursos-e-palestras/inscrever', [EventController::class, 'register'])->name('cursos.inscrever');
 Route::post('/api/inscrever', [EventController::class, 'register'])->name('api.inscrever');
 
