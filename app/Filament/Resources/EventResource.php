@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class EventResource extends Resource
 {
@@ -30,7 +31,7 @@ class EventResource extends Resource
                     ->label('Título do Evento')
                     ->required()
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
                     ->label('Slug de URL')
                     ->required()
@@ -138,6 +139,12 @@ class EventResource extends Resource
                     ->label('Apenas Ativos'),
             ])
             ->actions([
+                Tables\Actions\Action::make('inscritos')
+                    ->label('Ver inscritos')
+                    ->icon('heroicon-o-users')
+                    ->url(fn (Event $record): string => EventRegistrationResource::getUrl('index', [
+                        'event' => $record->getKey(),
+                    ])),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
