@@ -64,9 +64,9 @@ class EventRegistrationResource extends Resource
                     ->label('Nome')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('oab_uf')
-                    ->label('OAB/UF')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('oab_uf')
+                //     ->label('OAB/UF')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('whatsapp')
                     ->label('WhatsApp')
                     ->searchable(),

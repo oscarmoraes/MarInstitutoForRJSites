@@ -29,6 +29,10 @@
           <a href="{{ route('associar') }}" class="btn-accent-mar px-6 py-3.5 text-xs sm:text-sm shadow-xl">
             <i class="fa-solid fa-user-plus mr-1.5"></i> Seja um Associado
           </a>
+
+          <a href="{{ route('ecossistema') }}" class="btn-accent-mar px-6 py-3.5 text-xs sm:text-sm shadow-xl">
+            <i class="fa-solid fa-leaf mr-1.5"></i> Mar do Futuro
+          </a>
         </div>
 
         <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-2 text-center text-xs text-slate-300">

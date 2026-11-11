@@ -70,6 +70,8 @@
           </div>
         @endif
 
+        <a href="{{ route('ecossistema') }}" class="btn-accent-mar text-xs px-3 py-2 {{ request()->routeIs('ecossistema') ? 'ring-2 ring-[#17344D] ring-offset-2' : '' }}" {{ request()->routeIs('ecossistema') ? 'aria-current=page' : '' }}>Mar do Futuro</a>
+
         <!-- Dropdown Conteúdo -->
         <!-- @if(($siteSettings->modulo_noticias ?? true) || ($siteSettings->modulo_atos_oficiais ?? true) || ($siteSettings->modulo_cursos ?? true) || ($siteSettings->modulo_certificados ?? true))
           <div class="nav-dropdown group">
@@ -165,6 +167,7 @@
       <div class="space-y-1">
         <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2">Navegação Principal</div>
         <a href="{{ route('home') }}" class="flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#17344D] bg-slate-100"><i class="fa-solid fa-house text-[#C6282D]"></i> {{ $siteSettings->menu_inicio ?? 'Início' }}</a>
+        <a href="{{ route('ecossistema') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-bold text-[#C6282D] hover:bg-red-50" {{ request()->routeIs('ecossistema') ? 'aria-current=page' : '' }}><i class="fa-solid fa-sitemap w-4"></i> hardCoded</a>
         
         @if($siteSettings->modulo_carteirinha ?? true)
           <a href="{{ route('membro.carteirinha') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-bold text-[#17344D] hover:bg-slate-50"><i class="fa-solid fa-id-card text-[#17344D]"></i> {{ $siteSettings->menu_carteirinha ?? 'Carteirinha Digital' }}</a>

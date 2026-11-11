@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Rotas Públicas do Portal
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::view('/ecossistema', 'ecossistema')->name('ecossistema');
 
 Route::get('/diretoria', [BoardMemberController::class, 'diretoria'])->name('diretoria');
 Route::get('/comissoes', [BoardMemberController::class, 'comissoes'])->name('comissoes');
