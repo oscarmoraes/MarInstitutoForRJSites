@@ -94,6 +94,8 @@ class EventController extends Controller
     public function showRegisterForm($slug)
     {
         $event = Event::where('slug', $slug)->firstOrFail();
-        return view('curso-inscricao', compact('event'));
+        $schedules = EventSchedule::where('event_id', $event->id)->orderBy('ordem', 'ASC')->get();
+
+        return view('curso-inscricao', compact('event', 'schedules'));
     }
 }

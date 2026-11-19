@@ -37,7 +37,7 @@
             </p>
             <div class="flex flex-wrap gap-4 text-xs text-slate-300 pt-2">
               <span><i class="fa-regular fa-calendar-check text-[#C6282D] mr-1"></i> {{ $featuredEvent->data_evento ? $featuredEvent->data_evento->translatedFormat('d \d\e F, Y') : '' }}</span>
-              <span><i class="fa-solid fa-clock text-[#C6282D] mr-1"></i> {{ $featuredEvent->data_evento ? $featuredEvent->data_evento->format('H:i') . 'h' : '09:00' }}</span>
+              <span><i class="fa-solid fa-clock text-[#C6282D] mr-1"></i> {{ $featuredEvent->inicio ? $featuredEvent->inicio->format('H:i') . 'h' : '09:00' }}</span>
               <span><i class="fa-solid fa-users text-[#C6282D] mr-1"></i> Formato {{ $featuredEvent->formato }}</span>
             </div>
           </div>

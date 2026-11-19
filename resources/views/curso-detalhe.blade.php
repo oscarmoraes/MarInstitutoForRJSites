@@ -47,15 +47,15 @@
           </div>
         </div>
 
-        <!-- <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-red-400 text-sm shrink-0">
             <i class="fa-solid fa-clock"></i>
           </div>
           <div>
-            <div class="font-bold text-white">{{ $event->data_evento ? $event->data_evento->format('H:i') . 'h' : '09:00' }}</div>
-            <div class="text-[10px] text-slate-400">Carga: {{ $event->carga_horaria }}</div>
+            <div class="font-bold text-white">{{ $event->inicio ? $event->inicio->format('H:i') . 'h' : '09:00' }}</div>
+            <div class="text-[10px] text-slate-400">Horário de Início</div>
           </div>
-        </div> -->
+        </div>
 
         <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-red-400 text-sm shrink-0">
@@ -288,6 +288,26 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('input', (event) => {
+      const phoneInput = event.target;
+      if (!(phoneInput instanceof HTMLInputElement) || phoneInput.id !== 'whatsapp') {
+        return;
+      }
+
+      const digits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+      if (digits.length <= 2) {
+        phoneInput.value = `(${digits}${digits.length === 2 ? ')' : ''}`;
+        return;
+      }
+
+      const areaCode = digits.slice(0, 2);
+      const number = digits.slice(2);
+      const subscriberLength = digits.length === 11 ? 5 : 4;
+      phoneInput.value = `(${areaCode}) ${number.length > subscriberLength
+        ? `${number.slice(0, subscriberLength)}-${number.slice(subscriberLength)}`
+        : number}`;
+    });
+
     const form = document.getElementById('eventRegistrationForm');
     if (form) {
       form.addEventListener('submit', (e) => {

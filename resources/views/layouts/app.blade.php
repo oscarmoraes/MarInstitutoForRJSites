@@ -70,7 +70,7 @@
           </div>
         @endif
 
-        <a href="{{ route('ecossistema') }}" class="btn-accent-mar text-xs px-3 py-2 {{ request()->routeIs('ecossistema') ? 'ring-2 ring-[#17344D] ring-offset-2' : '' }}" {{ request()->routeIs('ecossistema') ? 'aria-current=page' : '' }}>Mar do Futuro</a>
+        <!-- <a href="{{ route('ecossistema') }}" class="btn-accent-mar text-xs px-3 py-2 {{ request()->routeIs('ecossistema') ? 'ring-2 ring-[#17344D] ring-offset-2' : '' }}" {{ request()->routeIs('ecossistema') ? 'aria-current=page' : '' }}>Mar do Futuro</a> -->
 
         <!-- Dropdown Conteúdo -->
         <!-- @if(($siteSettings->modulo_noticias ?? true) || ($siteSettings->modulo_atos_oficiais ?? true) || ($siteSettings->modulo_cursos ?? true) || ($siteSettings->modulo_certificados ?? true))

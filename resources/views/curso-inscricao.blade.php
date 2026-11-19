@@ -17,8 +17,8 @@
         <span><i class="fa-regular fa-calendar-check text-red-400 mr-1"></i>
           {{ $event->data_evento ? $event->data_evento->translatedFormat('d \d\e F, Y') : 'Data a definir' }}
         </span>
-        @if($event->data_evento)
-          <span><i class="fa-solid fa-clock text-red-400 mr-1"></i> {{ $event->data_evento->format('H:i') }}h</span>
+        @if($event->inicio)
+          <span><i class="fa-solid fa-clock text-red-400 mr-1"></i> {{ $event->inicio->format('H:i') }}h</span>
         @endif
         @if($event->local)
           <span><i class="fa-solid fa-location-dot text-red-400 mr-1"></i> {{ $event->local }}</span>
@@ -33,14 +33,88 @@
   <main class="py-10 sm:py-14 px-4 sm:px-6 md:px-8 max-w-5xl mx-auto w-full flex-grow">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
       <section class="lg:col-span-3 space-y-4">
-        <span class="badge-mar text-[10px] font-bold uppercase">Sobre o evento</span>
-        @if($event->resumo)
-          <p class="text-sm text-slate-600 leading-relaxed">{{ $event->resumo }}</p>
-        @endif
-        @if($event->descricao)
-          <div class="prose max-w-none text-sm text-slate-600 leading-relaxed">
+        
+        <!-- SOBRE O EVENTO -->
+        <section class="space-y-4 mb-8">
+          <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-circle-info text-[#C6282D]"></i> Sobre o Evento
+          </h2>
+          <div class="prose max-w-none text-slate-700 text-xs sm:text-base leading-relaxed space-y-4">
             {!! $event->descricao !!}
           </div>
+        </section>
+
+          <!-- PROGRAMAÇÃO OFICIAL -->
+        <section class="space-y-6 mt-8">
+          <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-[#C6282D]"></i> Programação Completa
+          </h2>
+
+          <div class="space-y-4">
+
+            @foreach ($schedules as $programacao)
+              <div class="md-card p-5 space-y-3 border-l-4 {{ $loop->iteration % 2 == 0 ? 'border-l-[#C6282D]' : 'border-l-[#17344D]' }}">
+                <div class="flex justify-between items-center text-xs font-bold text-[#17344D]">
+                  <span class="bg-slate-100 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1 text-[#C6282D]"></i> {{ $programacao->inicio->format('H:i') }} - {{ $programacao->fim->format('H:i') }}</span>
+                  <!-- <span class="text-slate-400 uppercase text-[10px]">Presencial</span> -->
+                </div>
+                <h3 class="font-title font-bold text-base text-[#17344D]">
+                  {{ $programacao->titulo }}
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {{ $programacao->descricao }}
+                </p>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {{ $programacao->speaker->nome }}
+                </p>
+              </div>
+            @endforeach
+
+          </div>
+        </section>
+
+        @if ($event->galleries->isNotEmpty())
+          <section class="space-y-6">
+            <h2 class="font-title font-extrabold text-xl sm:text-2xl text-[#17344D] border-b border-slate-200 pb-3 flex items-center gap-2">
+              <i class="fa-solid fa-images text-[#C6282D]"></i> Galeria do Evento
+            </h2>
+
+            @foreach ($event->galleries as $gallery)
+              @if ($gallery->photos->isNotEmpty())
+                <div class="space-y-4">
+                  <div>
+                    <h3 class="font-title font-bold text-lg text-[#17344D]">{{ $gallery->title }}</h3>
+                    @if ($gallery->description)
+                      <p class="text-sm text-slate-600 mt-1">{{ $gallery->description }}</p>
+                    @endif
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    @foreach ($gallery->photos as $photo)
+                      @php
+                        $photoUrl = filter_var($photo->path, FILTER_VALIDATE_URL)
+                            ? $photo->path
+                            : asset('storage/' . ltrim($photo->path, '/'));
+                      @endphp
+                      <figure class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <img src="{{ $photoUrl }}" alt="{{ $photo->title ?: $gallery->title }}" loading="lazy" class="w-full aspect-[4/3] object-cover transition duration-300 group-hover:scale-105">
+                        @if ($photo->title || $photo->description)
+                          <figcaption class="p-3">
+                            @if ($photo->title)
+                              <div class="font-semibold text-sm text-[#17344D]">{{ $photo->title }}</div>
+                            @endif
+                            @if ($photo->description)
+                              <p class="text-xs text-slate-500 mt-1">{{ $photo->description }}</p>
+                            @endif
+                          </figcaption>
+                        @endif
+                      </figure>
+                    @endforeach
+                  </div>
+                </div>
+              @endif
+            @endforeach
+          </section>
         @endif
       </section>
 
@@ -129,6 +203,22 @@
     if (!form || !submitButton || !generalError || !successModal || !closeSuccessButton) {
       return;
     }
+
+    const phoneInput = document.getElementById('registrationWhatsapp');
+    phoneInput?.addEventListener('input', () => {
+      const digits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+      if (digits.length <= 2) {
+        phoneInput.value = `(${digits}${digits.length === 2 ? ')' : ''}`;
+        return;
+      }
+
+      const areaCode = digits.slice(0, 2);
+      const number = digits.slice(2);
+      const subscriberLength = digits.length === 11 ? 5 : 4;
+      phoneInput.value = `(${areaCode}) ${number.length > subscriberLength
+        ? `${number.slice(0, subscriberLength)}-${number.slice(subscriberLength)}`
+        : number}`;
+    });
 
     const clearErrors = () => {
       generalError.textContent = '';
